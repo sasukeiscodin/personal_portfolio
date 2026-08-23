@@ -1,4 +1,5 @@
 import { Section } from "./Section";
+import { MaskText } from "./MaskText";
 import { NetworkDiagram } from "./NetworkDiagram";
 import { Artifact } from "./Artifact";
 import { homelab, homelabArtifacts } from "@/lib/data";
@@ -9,7 +10,7 @@ export function Homelab() {
       <div className="grid gap-12 xl:grid-cols-[1.15fr_1fr] xl:items-start">
         <div>
           <h3 className="text-xl font-medium tracking-[-0.01em] text-text">
-            {homelab.title}
+            <MaskText delay={220}>{homelab.title}</MaskText>
           </h3>
           <p className="mt-4 max-w-[58ch] text-md leading-relaxed text-muted">
             {homelab.summary}

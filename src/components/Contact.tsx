@@ -1,6 +1,7 @@
 import { Mail, Terminal } from "lucide-react";
 import { Section } from "./Section";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import { CopyEmail } from "./CopyEmail";
 import { profile } from "@/lib/data";
 
 const links = [
@@ -18,13 +19,16 @@ export function Contact() {
           resolution roles. If you&apos;re hiring or want to talk shop, reach out directly.
         </p>
 
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-8 inline-flex items-center gap-2.5 bg-text px-5 py-2.5 font-mono text-xs font-medium tracking-[0.06em] text-bg transition-opacity duration-100 hover:opacity-85"
-        >
-          <Mail size={14} aria-hidden="true" />
-          {profile.email}
-        </a>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={`mailto:${profile.email}`}
+            className="btn-sweep inline-flex items-center gap-2.5 bg-text px-5 py-2.5 font-mono text-xs font-medium tracking-[0.06em] text-bg"
+          >
+            <Mail size={14} aria-hidden="true" />
+            {profile.email}
+          </a>
+          <CopyEmail email={profile.email} />
+        </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
           {links.map(({ href, label, Icon }) => (

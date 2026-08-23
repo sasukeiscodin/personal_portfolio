@@ -1,4 +1,5 @@
 import { Section } from "./Section";
+import { MaskText } from "./MaskText";
 import { Panel } from "./Panel";
 import { Artifact } from "./Artifact";
 import { archProject, archArtifacts } from "@/lib/data";
@@ -8,7 +9,7 @@ export function Projects() {
     <Section id="projects" label="Projects">
       <Panel label="Arch Linux" meta="Daily driver">
         <h3 className="text-xl font-medium tracking-[-0.01em] text-text">
-          {archProject.title}
+          <MaskText delay={300}>{archProject.title}</MaskText>
         </h3>
         <p className="mt-4 max-w-[62ch] text-md leading-relaxed text-muted">
           {archProject.summary}

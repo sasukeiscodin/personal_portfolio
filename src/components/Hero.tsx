@@ -97,7 +97,7 @@ export function Hero() {
         >
           <a
             href="#contact"
-            className="bg-text px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-[0.1em] text-bg transition-opacity duration-100 hover:opacity-85"
+            className="btn-sweep bg-text px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-[0.1em] text-bg"
           >
             Contact
           </a>

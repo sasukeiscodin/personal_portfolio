@@ -1,5 +1,6 @@
 import { type CSSProperties, type ReactNode } from "react";
 import { Container } from "./Container";
+import { MaskText } from "./MaskText";
 
 /*
   The asymmetric grid behind every section: a narrow gutter and a wide content
@@ -49,11 +50,11 @@ export function Section({
               id={`${id}-heading`}
               className="font-mono text-2xs font-medium uppercase tracking-[0.18em] text-muted"
             >
-              {label}
+              <MaskText delay={120}>{label}</MaskText>
             </h2>
             {meta && (
               <p className="mt-2 font-mono text-2xs uppercase tracking-[0.12em] text-faint">
-                {meta}
+                <MaskText delay={200}>{meta}</MaskText>
               </p>
             )}
           </div>

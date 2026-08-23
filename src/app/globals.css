@@ -198,6 +198,48 @@ body::before {
   }
 
   /*
+    Scroll-triggered masked reveal. Same idea as the hero's load reveal but
+    driven by transition rather than animation, so it keys off the section
+    arriving. Used on short text (labels, headings) only: masking wrapped body
+    copy needs per-line splitting and degrades badly.
+  */
+  .mask-reveal > span {
+    transform: translateY(105%);
+    transition: transform calc(var(--dur-system) * 0.75) var(--ease-system);
+    transition-delay: var(--d, 0ms);
+  }
+
+  .is-visible .mask-reveal > span {
+    transform: translateY(0);
+  }
+
+  /*
+    Panels provision rather than appear: the header rule draws itself in, at
+    component scale, echoing the section divider at page scale.
+  */
+  .panel-head {
+    border-bottom-color: transparent;
+  }
+
+  .panel-head::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: var(--border);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-system) var(--ease-system);
+    transition-delay: 260ms;
+  }
+
+  .is-visible .panel-head::after {
+    transform: scaleX(1);
+  }
+
+  /*
     A soft band sweeps down the section once as it arrives, like a readout
     refreshing. Fires a single time and leaves nothing behind.
   */
@@ -407,6 +449,77 @@ body::before {
 .rail-node[data-state="active"] {
   background: var(--text);
   box-shadow: 0 0 0 3px var(--bg);
+}
+
+/* Shared geometry for both mask variants. Structural, so never gated. */
+.mask-line,
+.mask-reveal {
+  display: inline-block;
+  overflow: hidden;
+  /* Room for descenders, taken back so layout is unchanged. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.mask-reveal > span {
+  display: inline-block;
+}
+
+/*
+  Probe. On hover a brighter line traces the panel's top edge left to right,
+  the way a check runs across a component. Replaces a plain colour swap.
+*/
+.panel {
+  position: relative;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--muted);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease-component);
+  pointer-events: none;
+}
+
+.panel:hover::before,
+.panel:focus-within::before {
+  transform: scaleX(1);
+}
+
+.panel-head {
+  position: relative;
+}
+
+/*
+  Buttons fill from the left instead of dropping opacity. Opacity fade on a
+  solid button reads as the button switching off; a sweep reads as a response.
+*/
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.13);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms var(--ease-component);
+}
+
+.btn-sweep:hover::before,
+.btn-sweep:focus-visible::before {
+  transform: scaleX(1);
 }
 
 /*
