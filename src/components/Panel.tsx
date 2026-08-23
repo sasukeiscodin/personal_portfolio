@@ -18,7 +18,9 @@ export function Panel({
   className?: string;
 }) {
   return (
-    <div className={`border border-border bg-panel ${className}`}>
+    <div
+      className={`border border-border bg-panel transition-colors duration-200 hover:border-border-strong ${className}`}
+    >
       {(label || meta) && (
         <div className="flex items-baseline justify-between gap-4 border-b border-border px-6 py-3">
           {label && (

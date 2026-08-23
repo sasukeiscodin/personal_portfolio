@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 import { profile } from "@/lib/data";
 
 /*
@@ -75,10 +75,15 @@ export function Rail() {
       </a>
 
       <ul className="-my-1.5">
-        {sections.map((section) => {
+        {sections.map((section, i) => {
           const isActive = active === section.id;
           return (
-            <li key={section.id}>
+            <li
+              key={section.id}
+              className="enter-rise"
+              // Cascades down the rail on load rather than appearing all at once.
+              style={{ "--d": `${360 + i * 60}ms` } as CSSProperties}
+            >
               <a href={`#${section.id}`} className="group flex items-center gap-3 py-1.5">
                 <span
                   aria-hidden="true"

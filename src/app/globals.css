@@ -132,23 +132,227 @@ body::before {
   than no animation.
 */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  /*
+    The divider draws itself across as the section arrives, like a schematic
+    being ruled in. The static border is hidden only here, so a no-JS render
+    keeps every divider it would otherwise have.
+  */
   [data-reveal] {
-    opacity: 0;
-    transform: translateY(6px);
-    transition:
-      opacity 240ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    border-top-color: transparent;
   }
 
-  [data-reveal].is-visible {
+  [data-reveal]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal].is-visible::before {
+    transform: scaleX(1);
+  }
+
+  /* Content rises further and slower than before, so the arrival registers. */
+  [data-reveal-content] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 120ms;
+  }
+
+  [data-reveal].is-visible [data-reveal-content] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /*
+    A soft band sweeps down the section once as it arrives, like a readout
+    refreshing. Fires a single time and leaves nothing behind.
+  */
+  [data-reveal]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.055) 45%,
+      transparent 100%
+    );
+    background-size: 100% 220px;
+    background-repeat: no-repeat;
+    background-position: 0 -220px;
+  }
+
+  [data-reveal].is-visible::after {
+    animation: scan-sweep 1250ms cubic-bezier(0.33, 0, 0.2, 1) 140ms 1 both;
+  }
+}
+
+@keyframes scan-sweep {
+  0% {
+    opacity: 1;
+    background-position: 0 -220px;
+  }
+  100% {
+    opacity: 0;
+    background-position: 0 100%;
+  }
+}
+
+/*
+  Cursor torch over the hero grid. A second, brighter copy of the schematic grid
+  masked to a circle that follows the pointer, so the drawing appears to be lit
+  locally rather than glowing on its own.
+*/
+.grid-torch {
+  --mx: 50%;
+  --my: 40%;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.13) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.13) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+  -webkit-mask-image: radial-gradient(
+    240px circle at var(--mx) var(--my),
+    #000 0%,
+    transparent 68%
+  );
+  mask-image: radial-gradient(
+    240px circle at var(--mx) var(--my),
+    #000 0%,
+    transparent 68%
+  );
+}
+
+.grid-torch.is-lit {
+  opacity: 1;
+}
+
+/*
+  Entrance. A clip wipe rather than a fade: mono type resolving upward reads as a
+  system rendering a line, which suits the concept better than a typewriter
+  effect. `both` fill mode means reduced-motion users land on the end state.
+*/
+@keyframes enter-wipe {
+  from {
+    opacity: 0;
+    clip-path: inset(105% 0 0 0);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(-25% 0 0 0);
+    transform: none;
+  }
+}
+
+@keyframes enter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
     opacity: 1;
     transform: none;
   }
 }
 
+.enter-wipe {
+  animation: enter-wipe 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.enter-rise {
+  animation: enter-rise 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
 /*
-  The single continuous motion on the page: one pulse travelling one link of the
-  topology, suggesting a live system without animating anything untrue.
+  Staggered rows inside a revealed section. Gated with the reveal itself so no-JS
+  never leaves rows hidden.
+*/
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-stagger] > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .is-visible [data-stagger] > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Rows arrive one after another rather than as a block. */
+  .is-visible [data-stagger] > *:nth-child(1) { transition-delay: 200ms; }
+  .is-visible [data-stagger] > *:nth-child(2) { transition-delay: 280ms; }
+  .is-visible [data-stagger] > *:nth-child(3) { transition-delay: 360ms; }
+  .is-visible [data-stagger] > *:nth-child(4) { transition-delay: 440ms; }
+  .is-visible [data-stagger] > *:nth-child(5) { transition-delay: 520ms; }
+  .is-visible [data-stagger] > *:nth-child(6) { transition-delay: 600ms; }
+  .is-visible [data-stagger] > *:nth-child(n + 7) { transition-delay: 680ms; }
+}
+
+/*
+  Live status indicator. A slow breath on the availability square, the same
+  convention a status page uses to show a check is still running.
+*/
+@keyframes state-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.state-breathe {
+  animation: state-breathe 2600ms ease-in-out infinite;
+}
+
+/*
+  Hover underline that draws from the left rather than simply appearing.
+*/
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/*
+  The single continuous motion on the page: a pulse travelling the topology,
+  suggesting a live system without animating anything untrue.
 */
 @keyframes link-pulse {
   0%,
@@ -173,6 +377,10 @@ body::before {
   position: relative;
 }
 
+/*
+  Each link carries its own delay, so the pulse reads as one packet travelling
+  the whole path rather than four unrelated blinks.
+*/
 .pulse-link::after {
   content: "";
   position: absolute;
@@ -181,6 +389,55 @@ body::before {
   height: 6px;
   background: var(--text);
   animation: link-pulse 7s ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0ms);
+}
+
+/*
+  Scrollbar. Styled to read as part of the interface rather than an OS artifact:
+  a hairline gutter matching every other divider on the page, with a thin square
+  thumb inset by a background-coloured border. Colour stays achromatic, since
+  colour on this site means state.
+*/
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--faint) var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Windows Chrome draws increment arrows at both ends once the bar is styled. */
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--faint);
+  /* A bg-coloured border insets the thumb, leaving a thin bar in a wider gutter. */
+  border: 3px solid var(--bg);
+  border-radius: 0;
+  transition: background 150ms linear;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--text);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg);
 }
 
 ::selection {

@@ -1,3 +1,4 @@
+import { type CSSProperties } from "react";
 import { Panel } from "./Panel";
 
 /*
@@ -7,10 +8,19 @@ import { Panel } from "./Panel";
 const devices = ["Phone", "Laptop", "TV"];
 const services = ["Jellyfin", "Navidrome", "Samba / NAS"];
 
-function Rung({ pulse = false }: { pulse?: boolean }) {
+/*
+  Staggered delays make the four links read as one packet travelling the whole
+  path, devices to server to remote, rather than four unrelated blinks.
+*/
+function Rung({ delay }: { delay?: number }) {
   return (
     <div
-      className={`mx-auto h-5 w-px bg-border ${pulse ? "pulse-link" : ""}`}
+      className={`mx-auto h-5 w-px bg-border ${delay === undefined ? "" : "pulse-link"}`}
+      style={
+        delay === undefined
+          ? undefined
+          : ({ "--pulse-delay": `${delay}ms` } as CSSProperties)
+      }
       aria-hidden="true"
     />
   );
@@ -31,9 +41,9 @@ export function NetworkDiagram() {
           ))}
         </div>
 
-        <Rung />
+        <Rung delay={0} />
         <p className="text-center text-2xs uppercase tracking-[0.16em] text-faint">LAN</p>
-        <Rung pulse />
+        <Rung delay={260} />
 
         <div className="mx-auto max-w-xs border border-border-strong bg-bg p-5 text-center">
           <p className="text-2xs font-medium uppercase tracking-[0.14em] text-text">
@@ -51,11 +61,11 @@ export function NetworkDiagram() {
           </div>
         </div>
 
-        <Rung />
+        <Rung delay={520} />
         <p className="text-center text-2xs uppercase tracking-[0.14em] text-faint">
           Tailscale · no inbound ports
         </p>
-        <Rung />
+        <Rung delay={780} />
 
         <div className="mx-auto w-fit border border-border px-3 py-1.5 text-2xs uppercase tracking-[0.1em] text-muted">
           Remote access

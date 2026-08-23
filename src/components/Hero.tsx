@@ -1,32 +1,42 @@
+import { type CSSProperties } from "react";
 import { Mail, Terminal, ArrowDown } from "lucide-react";
 import { Container } from "./Container";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { StateIndicator } from "./StateIndicator";
+import { HeroGrid } from "./HeroGrid";
 import { profile, status } from "@/lib/data";
 
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
-      {/* Schematic grid: zonal, behind the hero only. */}
-      <div
-        className="schematic-grid pointer-events-none absolute inset-0"
-        aria-hidden="true"
-      />
+      {/* Schematic grid, zonal to the hero, with a pointer-tracked torch layer. */}
+      <HeroGrid />
 
       <Container className="relative pt-24 pb-20 sm:pt-32 sm:pb-28">
-        <h1 className="font-mono text-2xl font-medium uppercase tracking-[-0.02em] text-text sm:text-3xl">
+        <h1
+          className="enter-wipe font-mono text-2xl font-medium uppercase tracking-[-0.02em] text-text sm:text-3xl"
+          style={{ "--d": "60ms" } as CSSProperties}
+        >
           {profile.name}
         </h1>
 
-        <p className="mt-5 font-mono text-2xs uppercase tracking-[0.18em] text-muted sm:text-xs">
+        <p
+          className="enter-wipe mt-5 font-mono text-2xs uppercase tracking-[0.18em] text-muted sm:text-xs"
+          style={{ "--d": "200ms" } as CSSProperties}
+        >
           {profile.tagline}
         </p>
 
         {/* Status strip: real values only. */}
-        <dl className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 border-y border-border py-4">
+        <dl
+          className="enter-rise mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 border-y border-border py-4"
+          style={{ "--d": "340ms" } as CSSProperties}
+        >
           {status.map((item) => (
             <div key={item.label} className="flex items-center gap-2.5">
-              {item.state && <StateIndicator state={item.state} />}
+              {item.state && (
+                <StateIndicator state={item.state} breathe={item.state === "ok"} />
+              )}
               <dt className="sr-only">{item.label}</dt>
               <dd className="font-mono text-xs uppercase tracking-[0.1em] text-muted">
                 {item.value}
@@ -35,11 +45,17 @@ export function Hero() {
           ))}
         </dl>
 
-        <p className="mt-10 max-w-xl text-md leading-relaxed text-muted">
+        <p
+          className="enter-rise mt-10 max-w-xl text-md leading-relaxed text-muted"
+          style={{ "--d": "440ms" } as CSSProperties}
+        >
           {profile.intro}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-6">
+        <div
+          className="enter-rise mt-10 flex flex-wrap items-center gap-6"
+          style={{ "--d": "540ms" } as CSSProperties}
+        >
           <a
             href="#contact"
             className="bg-text px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-[0.1em] text-bg transition-opacity duration-100 hover:opacity-85"
@@ -58,7 +74,10 @@ export function Hero() {
 
         {/* Labelled rather than icon-only: an unlabelled terminal glyph reads as
             nothing, and a recruiter shouldn't have to guess where a link goes. */}
-        <div className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-3">
+        <div
+          className="enter-rise mt-12 flex flex-wrap items-center gap-x-7 gap-y-3"
+          style={{ "--d": "640ms" } as CSSProperties}
+        >
           {[
             { href: profile.github, label: "GitHub", Icon: GithubIcon },
             { href: profile.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
@@ -69,7 +88,7 @@ export function Hero() {
               href={href}
               target="_blank"
               rel="noreferrer noopener"
-              className="flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-faint transition-colors duration-100 hover:text-text"
+              className="link-underline flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-faint transition-colors duration-100 hover:text-text"
             >
               <Icon size={15} aria-hidden="true" />
               {label}

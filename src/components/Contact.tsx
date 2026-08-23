@@ -33,7 +33,7 @@ export function Contact() {
               href={href}
               target="_blank"
               rel="noreferrer noopener"
-              className="flex items-center gap-2.5 font-mono text-2xs uppercase tracking-[0.12em] text-muted transition-colors duration-100 hover:text-text"
+              className="link-underline flex items-center gap-2.5 font-mono text-2xs uppercase tracking-[0.12em] text-muted transition-colors duration-100 hover:text-text"
             >
               <Icon size={14} aria-hidden="true" />
               {label}

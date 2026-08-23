@@ -33,10 +33,15 @@ export function Section({
       id={id}
       aria-labelledby={`${id}-heading`}
       data-reveal
-      className={`border-t border-border ${major ? "py-24 sm:py-32" : "py-20 sm:py-24"}`}
+      className={`relative border-t border-border ${
+        major ? "py-24 sm:py-32" : "py-20 sm:py-24"
+      }`}
     >
       <Container>
-        <div className="grid gap-x-10 gap-y-8 lg:grid-cols-[7rem_1fr]">
+        <div
+          data-reveal-content
+          className="grid gap-x-10 gap-y-8 lg:grid-cols-[7rem_1fr]"
+        >
           <div>
             <h2
               id={`${id}-heading`}
