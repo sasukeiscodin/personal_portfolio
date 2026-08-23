@@ -102,6 +102,28 @@ export const archProject: LabProject = {
   ],
 };
 
+/*
+  Networking gets its own section because it is half the role target, and a row
+  of protocol acronyms in the skills list reads as coursework rather than
+  practice. Everything here is drawn from the support work, the homelab, or
+  confirmed lab practice — no claims beyond that.
+*/
+export const networking = {
+  summary:
+    "Protocol-level troubleshooting on real machines, plus simulated topologies and packet analysis while working toward the CCNA.",
+  applied: [
+    "Diagnose TCP/IP configuration, DNS resolution, and DHCP issues as first point of contact, ongoing since 2023.",
+    "Resolve Wi-Fi, connectivity, and printer and file-sharing faults across mixed Windows and Linux devices.",
+    "Run a Tailscale mesh VPN for remote access to the home server without exposing any inbound ports.",
+    "Configured Samba (SMB) for centralized cross-device access across the local network.",
+  ],
+  lab: [
+    "Build and test network topologies in Cisco Packet Tracer and GNS3.",
+    "Analyze captured traffic in Wireshark to trace connectivity faults and protocol behaviour.",
+  ],
+  stack: ["TCP/IP", "DNS", "DHCP", "Tailscale", "Wireshark", "Packet Tracer", "GNS3"],
+};
+
 export type SkillGroup = {
   category: string;
   /* Backed by something concrete elsewhere on this page or by paid work. */
@@ -184,6 +206,9 @@ export const homelabArtifacts: ArtifactSpec[] = [];
 
 /* Arch + i3 desktop capture — rendered in the Projects section. */
 export const archArtifacts: ArtifactSpec[] = [];
+
+/* Topology and packet-capture screenshots — rendered in the Networking section. */
+export const networkingArtifacts: ArtifactSpec[] = [];
 
 export type Certification = {
   name: string;
