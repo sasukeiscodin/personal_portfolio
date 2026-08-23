@@ -1,6 +1,7 @@
 import { Section } from "./Section";
 import { NetworkDiagram } from "./NetworkDiagram";
-import { homelab } from "@/lib/data";
+import { Artifact } from "./Artifact";
+import { homelab, homelabArtifacts } from "@/lib/data";
 
 export function Homelab() {
   return (
@@ -41,6 +42,15 @@ export function Homelab() {
 
         <NetworkDiagram />
       </div>
+
+      {/* Evidence. Renders only once artifacts are added to the data file. */}
+      {homelabArtifacts.length > 0 && (
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          {homelabArtifacts.map((artifact) => (
+            <Artifact key={artifact.src} {...artifact} />
+          ))}
+        </div>
+      )}
     </Section>
   );
 }

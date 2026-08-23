@@ -163,6 +163,28 @@ export const skills: SkillGroup[] = [
   },
 ];
 
+/*
+  Evidence artifacts. To publish one: drop the file into the matching folder
+  under public/images/, then add its entry to the relevant array below. Nothing
+  else needs to change — the sections render whatever is present.
+
+  `alt` describes what the image DEMONSTRATES, not what it is.
+*/
+export type ArtifactSpec = {
+  src: string;
+  alt: string;
+  caption: string;
+  meta?: string;
+  width: number;
+  height: number;
+};
+
+/* Hardware photo and terminal captures — rendered in the Homelab section. */
+export const homelabArtifacts: ArtifactSpec[] = [];
+
+/* Arch + i3 desktop capture — rendered in the Projects section. */
+export const archArtifacts: ArtifactSpec[] = [];
+
 export type Certification = {
   name: string;
   issuer: string;

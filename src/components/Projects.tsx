@@ -1,6 +1,7 @@
 import { Section } from "./Section";
 import { Panel } from "./Panel";
-import { archProject } from "@/lib/data";
+import { Artifact } from "./Artifact";
+import { archProject, archArtifacts } from "@/lib/data";
 
 export function Projects() {
   return (
@@ -34,6 +35,15 @@ export function Projects() {
           ))}
         </div>
       </Panel>
+
+      {/* Evidence. Renders only once artifacts are added to the data file. */}
+      {archArtifacts.length > 0 && (
+        <div className="mt-6 grid gap-6">
+          {archArtifacts.map((artifact) => (
+            <Artifact key={artifact.src} {...artifact} />
+          ))}
+        </div>
+      )}
     </Section>
   );
 }

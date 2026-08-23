@@ -56,40 +56,31 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="mt-12 flex items-center gap-6">
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="GitHub profile"
-            className="text-faint transition-colors duration-100 hover:text-text"
-          >
-            <GithubIcon size={18} />
-          </a>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="LinkedIn profile"
-            className="text-faint transition-colors duration-100 hover:text-text"
-          >
-            <LinkedinIcon size={18} />
-          </a>
-          <a
-            href={profile.tryhackme}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="TryHackMe profile"
-            className="text-faint transition-colors duration-100 hover:text-text"
-          >
-            <Terminal size={18} />
-          </a>
+        {/* Labelled rather than icon-only: an unlabelled terminal glyph reads as
+            nothing, and a recruiter shouldn't have to guess where a link goes. */}
+        <div className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-3">
+          {[
+            { href: profile.github, label: "GitHub", Icon: GithubIcon },
+            { href: profile.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
+            { href: profile.tryhackme, label: "TryHackMe", Icon: Terminal },
+          ].map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-faint transition-colors duration-100 hover:text-text"
+            >
+              <Icon size={15} aria-hidden="true" />
+              {label}
+            </a>
+          ))}
           <a
             href={`mailto:${profile.email}`}
-            aria-label="Send an email"
-            className="text-faint transition-colors duration-100 hover:text-text"
+            className="flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-faint transition-colors duration-100 hover:text-text"
           >
-            <Mail size={18} />
+            <Mail size={15} aria-hidden="true" />
+            Email
           </a>
         </div>
       </Container>
