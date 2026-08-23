@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
-  Control Plane — design tokens
+  Control Plane: design tokens
 
   The interface is achromatic by default. Colour appears only where it carries
   semantic meaning (available / in progress / down), mirroring how state is
@@ -9,7 +9,7 @@
 */
 
 :root {
-  /* Surfaces — true neutral graphite, deliberately not blue-black */
+  /* Surfaces: true neutral graphite, deliberately not blue-black */
   --bg: #0b0b0c;
   --surface: #111112;
   --panel: #151517;
@@ -21,7 +21,7 @@
   --muted: #9a9aa2;
   --faint: #6e6e76;
 
-  /* State — the only colour permitted in the interface */
+  /* State: the only colour permitted in the interface */
   --state-ok: #3fb950;
   --state-progress: #d29922;
   --state-down: #f85149;
@@ -49,7 +49,7 @@
   --font-mono: var(--font-plex-mono);
 
   /*
-    Type scale — tighter than a conventional scale. Precision reads engineered.
+    Type scale, tighter than a conventional scale. Precision reads engineered.
     12 / 13 / 15 / 17 / 20 / 26 / 34 / 56 / 72
   */
   --text-2xs: 0.6875rem;
@@ -99,8 +99,8 @@ body::before {
 }
 
 /*
-  Zonal schematic grid. Applied only behind specific zones, never globally —
-  flat and unlit, so it reads as engineering drawing paper rather than synthwave.
+  Zonal schematic grid. Applied only behind specific zones, never globally.
+  Flat and unlit, so it reads as engineering drawing paper rather than synthwave.
 */
 .schematic-grid {
   background-image:
@@ -123,7 +123,7 @@ body::before {
   Scroll reveal.
 
   Gated on `scripting: enabled` so the hidden state is never applied when there
-  is no JavaScript to reveal it again — content stays visible instead of
+  is no JavaScript to reveal it again, so content stays visible instead of
   disappearing. Browsers too old to understand the query skip the whole block,
   which fails safe the same way. Reduced motion opts out entirely.
 

@@ -26,7 +26,7 @@ public/images/
 | Format | PNG |
 | Max weight | 400 KB |
 
-A clean desktop — a couple of terminals open, nothing personal visible in tabs,
+A clean desktop: a couple of terminals open, nothing personal visible in tabs,
 filenames, or window titles.
 
 **Paste into `src/lib/data.ts`**, replacing `export const archArtifacts: ArtifactSpec[] = [];`
@@ -56,7 +56,7 @@ export const archArtifacts: ArtifactSpec[] = [
 | Format | JPG |
 | Max weight | 300 KB |
 
-The actual machine. Plain and unglamorous is fine — it exists, that's the point.
+The actual machine. Plain and unglamorous is fine. It exists, and that is the point.
 Just don't shoot it in the dark.
 
 ---
@@ -80,7 +80,7 @@ Dark terminal theme so they sit naturally against the page.
 | `uptime.png` | `uptime` | The box stays up |
 | `tailscale.png` | `tailscale status` | The VPN claim is real |
 
-Any subset is worth having — `services.png` and `tailscale.png` carry the most weight.
+Any subset is worth having. `services.png` and `tailscale.png` carry the most weight.
 
 **Redact before capturing:** public IPs, real hostnames, Tailscale node names, and
 anything in the shell prompt you'd rather not publish.
@@ -115,7 +115,7 @@ export const homelabArtifacts: ArtifactSpec[] = [
 ];
 ```
 
-Delete any entry whose file you haven't added — a missing file breaks the build.
+Delete any entry whose file you haven't added. A missing file breaks the build.
 
 ---
 

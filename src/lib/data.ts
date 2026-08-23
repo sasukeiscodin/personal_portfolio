@@ -9,7 +9,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/prathameshkasar/",
   tryhackme: "https://tryhackme.com/p/sasukeusingthm",
   resumeUrl: "/resume/Prathamesh_Kasar_Resume.pdf",
-  // Hero intro — first person, leads with the pivot. Kept to two sentences;
+  // Hero intro: first person, leads with the pivot. Kept to two sentences;
   // the fuller version lives in `summary` and in the About section.
   intro:
     "I automate data workflows in Python by day, and the rest of my time goes to a Linux server I built from a repurposed PC. I'm working toward a CCNA and a full-time move into infrastructure.",
@@ -18,7 +18,7 @@ export const profile = {
 };
 
 /*
-  Hero status strip. Every value here must be factually true — this component
+  Hero status strip. Every value here must be factually true, because this component
   borrows the language of a status page, so it must never carry invented data.
 */
 export type StatusItem = {
@@ -37,7 +37,7 @@ export type Experience = {
   role: string;
   org: string;
   period: string;
-  /* Shown under the org line — used for context the period alone can't carry. */
+  /* Shown under the org line, used for context the period alone can't carry. */
   note?: string;
   points: string[];
 };
@@ -46,7 +46,7 @@ export const experience: Experience[] = [
   {
     role: "IT Support",
     org: "Volunteer / Personal",
-    period: "2023 — Present",
+    period: "2023 - Present",
     points: [
       "Diagnosed and resolved Windows OS, boot, driver, network, and software issues for friends, family, and local users, serving as first point of contact for incident triage and resolution.",
       "Performed system backup and image management, including OS reimaging and restore operations on workstations.",
@@ -58,7 +58,7 @@ export const experience: Experience[] = [
   {
     role: "Data Analyst & Python Developer",
     org: "Future Market Insights, Pune",
-    period: "Mar 2026 — Present",
+    period: "Mar 2026 - Present",
     note: "Joined as Data Analyst Intern; converted to full-time in August 2026.",
     points: [
       "Automated repetitive data workflows using Python scripts, reducing manual effort and improving turnaround time.",
@@ -106,7 +106,7 @@ export const archProject: LabProject = {
   Networking gets its own section because it is half the role target, and a row
   of protocol acronyms in the skills list reads as coursework rather than
   practice. Everything here is drawn from the support work, the homelab, or
-  confirmed lab practice — no claims beyond that.
+  confirmed lab practice. No claims beyond that.
 */
 export const networking = {
   summary:
@@ -129,7 +129,7 @@ export type SkillGroup = {
   /* Backed by something concrete elsewhere on this page or by paid work. */
   handsOn: string[];
   /* Studied or used incidentally, with no artifact behind it. Honest tiering is
-     more persuasive than a longer flat list — and it survives an interview. */
+     more persuasive than a longer flat list, and it survives an interview. */
   familiar?: string[];
 };
 
@@ -188,7 +188,7 @@ export const skills: SkillGroup[] = [
 /*
   Evidence artifacts. To publish one: drop the file into the matching folder
   under public/images/, then add its entry to the relevant array below. Nothing
-  else needs to change — the sections render whatever is present.
+  else needs to change; the sections render whatever is present.
 
   `alt` describes what the image DEMONSTRATES, not what it is.
 */
@@ -201,13 +201,13 @@ export type ArtifactSpec = {
   height: number;
 };
 
-/* Hardware photo and terminal captures — rendered in the Homelab section. */
+/* Hardware photo and terminal captures, rendered in the Homelab section. */
 export const homelabArtifacts: ArtifactSpec[] = [];
 
-/* Arch + i3 desktop capture — rendered in the Projects section. */
+/* Arch + i3 desktop capture, rendered in the Projects section. */
 export const archArtifacts: ArtifactSpec[] = [];
 
-/* Topology and packet-capture screenshots — rendered in the Networking section. */
+/* Topology and packet-capture screenshots, rendered in the Networking section. */
 export const networkingArtifacts: ArtifactSpec[] = [];
 
 export type Certification = {

@@ -4,7 +4,7 @@ import Image from "next/image";
   Every image on the site goes through this frame. Without consistent chrome,
   screenshots look pasted in and cheapen the panels around them.
 
-  `alt` must describe what the image DEMONSTRATES, not what it is — screenshot
+  `alt` must describe what the image DEMONSTRATES, not what it is, because screenshot
   text is invisible to screen readers and to search.
 */
 export function Artifact({

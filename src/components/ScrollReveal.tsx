@@ -4,12 +4,12 @@ import { useEffect } from "react";
 
 /*
   Reveals each section once as it enters the viewport. Sections animate as whole
-  units rather than staggering their children — motion should clarify that new
+  units rather than staggering their children, because motion should clarify that new
   content has arrived, not perform.
 
   The hidden state is applied by an inline script in the document head (see
   layout.tsx) so there is no flash of visible-then-hidden content. If that script
-  never runs — no JS, or reduced motion — nothing is ever hidden.
+  never runs (no JS, or reduced motion), nothing is ever hidden.
 */
 export function ScrollReveal() {
   useEffect(() => {

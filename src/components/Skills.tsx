@@ -31,7 +31,7 @@ export function Skills() {
         ))}
       </dl>
 
-      {/* Legend — without it the two tones are just a styling quirk. */}
+      {/* Legend: without it the two tones are just a styling quirk. */}
       <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 border-t border-border pt-5 font-mono text-2xs uppercase tracking-[0.1em] lg:col-start-2">
         <span className="text-text">Hands-on</span>
         <span className="text-faint">Studied, not yet demonstrated</span>

@@ -1,6 +1,6 @@
 /*
   The only component permitted to emit colour. A 6px square rather than a
-  circle — squares read as instrumentation, circles read as notification.
+  circle: squares read as instrumentation, circles read as notification.
 */
 const tones = {
   ok: "bg-state-ok",

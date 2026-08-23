@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 
 /*
   The atomic content block. Hairline border, optional metadata header, near-square
-  corners — depth comes from border and surface luminance, never from shadow.
+  corners. Depth comes from border and surface luminance, never from shadow.
 */
 export function Panel({
   label,

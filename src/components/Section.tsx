@@ -5,7 +5,7 @@ import { Container } from "./Container";
   The asymmetric grid behind every section: a narrow gutter and a wide content
   track.
 
-  In `ledger` mode the gutter becomes a shared metadata channel — the section
+  In `ledger` mode the gutter becomes a shared metadata channel: the section
   label sits at the top of it and each row's metadata (dates, categories, state)
   aligns beneath, in the same column, via subgrid. Nesting a second gutter inside
   the content track pushes text too far right, so rows join the parent grid

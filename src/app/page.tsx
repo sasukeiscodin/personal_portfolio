@@ -14,7 +14,7 @@ import { Footer } from "@/components/Footer";
 import { profile, education } from "@/lib/data";
 
 /*
-  Structured data. Deliberately omits `jobTitle` — the current held title is Data
+  Structured data. Deliberately omits `jobTitle`: the current held title is Data
   Analyst, and asserting an infrastructure title here would be a false claim in
   machine-readable form. `description` and `knowsAbout` convey focus honestly.
 */

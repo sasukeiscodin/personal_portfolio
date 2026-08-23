@@ -7,7 +7,7 @@ import { profile, status } from "@/lib/data";
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
-      {/* Schematic grid — zonal, behind the hero only. */}
+      {/* Schematic grid: zonal, behind the hero only. */}
       <div
         className="schematic-grid pointer-events-none absolute inset-0"
         aria-hidden="true"
@@ -22,7 +22,7 @@ export function Hero() {
           {profile.tagline}
         </p>
 
-        {/* Status strip — real values only. */}
+        {/* Status strip: real values only. */}
         <dl className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 border-y border-border py-4">
           {status.map((item) => (
             <div key={item.label} className="flex items-center gap-2.5">

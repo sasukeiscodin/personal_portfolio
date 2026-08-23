@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 /*
   Below the rail's breakpoint there is no menu. On a single-page site a
-  hamburger is unnecessary chrome — people scroll. What's useful is knowing how
+  hamburger is unnecessary chrome, because people scroll. What's useful is knowing how
   far through you are, and being able to reach the one action that matters.
 */
 export function MobileNav() {

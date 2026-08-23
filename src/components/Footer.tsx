@@ -1,7 +1,7 @@
 import { Container } from "./Container";
 import { profile } from "@/lib/data";
 
-// Resolved at build time — reflects when the site was last deployed.
+// Resolved at build time. Reflects when the site was last deployed.
 const built = new Date();
 const lastUpdated = built.toLocaleDateString("en-GB", {
   month: "long",

@@ -19,7 +19,8 @@ const sections = [
 ];
 
 export function Rail() {
-  const [active, setActive] = useState("");
+  const [observed, setObserved] = useState("");
+  const [atBottom, setAtBottom] = useState(false);
 
   useEffect(() => {
     // A thin detection band near the top of the viewport: whichever section
@@ -28,7 +29,7 @@ export function Rail() {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setActive(entry.target.id);
+            setObserved(entry.target.id);
             break;
           }
         }
@@ -40,8 +41,24 @@ export function Rail() {
       const el = document.getElementById(section.id);
       if (el) observer.observe(el);
     }
-    return () => observer.disconnect();
+
+    // The final section sits too close to the end of the document to ever reach
+    // the detection band: the page runs out of scroll first. Without this, the
+    // last link can never light up and reads as broken.
+    const onScroll = () => {
+      const doc = document.documentElement;
+      setAtBottom(window.scrollY + window.innerHeight >= doc.scrollHeight - 4);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
+
+  const active = atBottom ? sections[sections.length - 1].id : observed;
 
   return (
     <nav

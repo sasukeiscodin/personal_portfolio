@@ -1,7 +1,7 @@
 import { Panel } from "./Panel";
 
 /*
-  Placeholder topology — a schematic of the real setup, not an artifact. Replaced
+  Placeholder topology: a schematic of the real setup, not an artifact. Replaced
   in Wave 3 by a hand-authored SVG matched to the design tokens.
 */
 const devices = ["Phone", "Laptop", "TV"];

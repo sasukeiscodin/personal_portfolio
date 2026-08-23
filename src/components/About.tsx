@@ -8,7 +8,7 @@ export function About() {
         <div className="max-w-[66ch] space-y-4 text-md leading-relaxed text-muted">
           <p>
             I&apos;m a Computer Engineering graduate from Savitribai Phule Pune University with a
-            practical, hands-on relationship to Linux. Since 2023, I&apos;ve provided IT support —
+            practical, hands-on relationship to Linux. Since 2023, I&apos;ve provided IT support:
             diagnosing OS, driver, network, and connectivity issues, managing backups and system
             images, and applying patches to keep machines stable and secure.
           </p>

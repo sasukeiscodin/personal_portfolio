@@ -18,7 +18,7 @@ const plexMono = IBM_Plex_Mono({
 
 // Update NEXT_PUBLIC_SITE_URL once the site is deployed (e.g. to its Vercel URL).
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const title = "Prathamesh Kasar — Linux Systems Administrator";
+const title = "Prathamesh Kasar | Linux Systems Administrator";
 const description =
   "Computer Engineering graduate with hands-on Linux system administration experience: self-hosted server infrastructure, network troubleshooting, monitoring, and automation.";
 
