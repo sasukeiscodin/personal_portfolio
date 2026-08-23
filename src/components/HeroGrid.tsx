@@ -67,11 +67,6 @@ export function HeroGrid() {
         className="grid-torch pointer-events-none absolute inset-0"
         aria-hidden="true"
       />
-      {/* Tier 4: keeps the first screen alive once the boot has settled. */}
-      <div
-        className="grid-ambient pointer-events-none absolute inset-y-0 left-0"
-        aria-hidden="true"
-      />
     </>
   );
 }
