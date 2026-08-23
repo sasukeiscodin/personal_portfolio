@@ -210,6 +210,23 @@ export const archArtifacts: ArtifactSpec[] = [];
 /* Topology and packet-capture screenshots, rendered in the Networking section. */
 export const networkingArtifacts: ArtifactSpec[] = [];
 
+/* Profile screenshot or badge, rendered in the Certifications section. */
+export const tryhackmeArtifacts: ArtifactSpec[] = [];
+
+/*
+  TryHackMe figures. Every field is optional and the block only renders once at
+  least one is filled, so an empty profile shows nothing rather than a row of
+  blanks. Only enter numbers you can see on your own profile page.
+*/
+export type Stat = { label: string; value: string };
+
+export const tryhackmeStats: Stat[] = [
+  // { label: "Rank", value: "" },
+  // { label: "Rooms completed", value: "" },
+  // { label: "Streak", value: "" },
+  // { label: "Badges", value: "" },
+];
+
 export type Certification = {
   name: string;
   issuer: string;

@@ -1,6 +1,14 @@
+import { Terminal } from "lucide-react";
 import { Section } from "./Section";
 import { StateIndicator } from "./StateIndicator";
-import { certifications, inProgress } from "@/lib/data";
+import { Artifact } from "./Artifact";
+import {
+  certifications,
+  inProgress,
+  profile,
+  tryhackmeArtifacts,
+  tryhackmeStats,
+} from "@/lib/data";
 
 function Row({
   state,
@@ -69,6 +77,45 @@ export function Certifications() {
           />
         ))}
       </div>
+
+      {/*
+        TryHackMe. Renders only once real figures or a screenshot are supplied:
+        an empty profile block is worse than no block at all.
+      */}
+      {(tryhackmeStats.length > 0 || tryhackmeArtifacts.length > 0) && (
+        <div className="mt-10 border-t border-border pt-8 lg:col-start-2">
+          <a
+            href={profile.tryhackme}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="link-underline inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.14em] text-muted transition-colors duration-150 hover:text-text"
+          >
+            <Terminal size={13} aria-hidden="true" />
+            TryHackMe
+          </a>
+
+          {tryhackmeStats.length > 0 && (
+            <dl className="mt-5 flex flex-wrap gap-x-12 gap-y-4">
+              {tryhackmeStats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="font-mono text-2xs uppercase tracking-[0.12em] text-faint">
+                    {stat.label}
+                  </dt>
+                  <dd className="mt-1.5 font-mono text-lg text-text">{stat.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
+          {tryhackmeArtifacts.length > 0 && (
+            <div className="mt-7 grid max-w-xl gap-6">
+              {tryhackmeArtifacts.map((artifact) => (
+                <Artifact key={artifact.src} {...artifact} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </Section>
   );
 }
