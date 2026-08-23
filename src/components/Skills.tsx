@@ -4,26 +4,30 @@ import { skills } from "@/lib/data";
 
 export function Skills() {
   return (
-    <section id="skills" className="border-b border-border py-20">
+    <section
+      id="skills"
+      aria-labelledby="skills-heading"
+      className="border-t border-border py-20 sm:py-24"
+    >
       <Container>
-        <SectionHeading index="05" title="Skills" id="skills-heading" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeading id="skills-heading" label="Skills" />
+        <dl>
           {skills.map((group) => (
-            <div key={group.category} className="rounded-lg border border-border bg-card p-5">
-              <h3 className="font-mono text-sm text-primary">{group.category}</h3>
-              <ul className="mt-3 flex flex-wrap gap-2">
+            <div
+              key={group.category}
+              className="grid gap-x-10 gap-y-2 border-t border-border py-5 first:border-t-0 first:pt-0 sm:grid-cols-[14rem_1fr]"
+            >
+              <dt className="font-mono text-2xs uppercase tracking-[0.14em] text-faint sm:pt-0.5">
+                {group.category}
+              </dt>
+              <dd className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-muted">
                 {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-md border border-border px-2.5 py-1 text-xs text-muted"
-                  >
-                    {item}
-                  </li>
+                  <span key={item}>{item}</span>
                 ))}
-              </ul>
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
       </Container>
     </section>
   );

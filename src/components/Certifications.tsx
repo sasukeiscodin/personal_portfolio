@@ -1,33 +1,61 @@
-import { BadgeCheck } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Container } from "./Container";
-import { certifications } from "@/lib/data";
+import { StateIndicator } from "./StateIndicator";
+import { certifications, inProgress } from "@/lib/data";
 
 export function Certifications() {
   return (
-    <section id="certifications" className="border-b border-border py-20">
+    <section
+      id="certifications"
+      aria-labelledby="certifications-heading"
+      className="border-t border-border py-20 sm:py-24"
+    >
       <Container>
-        <SectionHeading index="06" title="Certifications" id="certifications-heading" />
-        <div className="space-y-4">
+        <SectionHeading id="certifications-heading" label="Certifications" />
+        <div>
           {certifications.map((cert) => (
             <div
               key={cert.name}
-              className="flex flex-col gap-4 rounded-lg border border-border bg-card p-6 sm:flex-row sm:items-start"
+              className="grid gap-x-10 gap-y-3 border-t border-border py-6 first:border-t-0 first:pt-0 sm:grid-cols-[10rem_1fr]"
             >
-              <BadgeCheck className="mt-1 shrink-0 text-signal" size={24} aria-hidden="true" />
+              <div className="flex items-center gap-2.5 sm:pt-1">
+                <StateIndicator state="ok" />
+                <span className="font-mono text-2xs uppercase tracking-[0.12em] text-muted">
+                  Completed
+                </span>
+              </div>
               <div>
-                <h3 className="font-semibold text-text">{cert.name}</h3>
+                <h3 className="text-base font-medium text-text">{cert.name}</h3>
                 <p className="mt-1 text-sm text-muted">{cert.issuer}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
                   {cert.topics.map((topic) => (
                     <span
                       key={topic}
-                      className="rounded-md border border-border px-2.5 py-1 font-mono text-xs text-muted"
+                      className="font-mono text-2xs uppercase tracking-[0.1em] text-faint"
                     >
                       {topic}
                     </span>
                   ))}
                 </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Trajectory — in-progress work reads as direction, which matters for a junior candidate. */}
+          {inProgress.map((item) => (
+            <div
+              key={item.name}
+              className="grid gap-x-10 gap-y-3 border-t border-border py-6 sm:grid-cols-[10rem_1fr]"
+            >
+              <div className="flex items-center gap-2.5 sm:pt-1">
+                <StateIndicator state="progress" />
+                <span className="font-mono text-2xs uppercase tracking-[0.12em] text-muted">
+                  In progress
+                </span>
+              </div>
+              <div>
+                <h3 className="text-base font-medium text-text">{item.name}</h3>
+                <p className="mt-1 text-sm text-muted">{item.detail}</p>
               </div>
             </div>
           ))}

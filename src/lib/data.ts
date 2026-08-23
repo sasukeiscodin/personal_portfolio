@@ -1,15 +1,37 @@
 export const profile = {
   name: "Prathamesh Kasar",
+  // `title` drives page metadata; `tagline` is the shorter hero display line.
   title: "Linux System Administration · Server Monitoring · Incident Resolution",
+  tagline: "Linux Systems · Networking · Server Monitoring",
   location: "Hinjewadi, Pune, India",
   email: "prathameshsk1@gmail.com",
   github: "https://github.com/sasukeiscodin",
   linkedin: "https://www.linkedin.com/in/prathameshkasar/",
   tryhackme: "https://tryhackme.com/p/sasukeusingthm",
   resumeUrl: "/resume/Prathamesh_Kasar_Resume.pdf",
+  // Hero intro — first person, leads with the pivot. Kept to two sentences;
+  // the fuller version lives in `summary` and in the About section.
+  intro:
+    "I automate data workflows in Python by day, and the rest of my time goes to a Linux server I built from a repurposed PC. I'm working toward a CCNA and a full-time move into infrastructure.",
   summary:
     "Computer Engineering graduate with hands-on Linux system administration experience, including building and maintaining a self-hosted multi-service Linux server from scratch. Diagnoses and resolves system-level, network, and application issues through ongoing IT support since 2023. Experienced in server health monitoring, patch management, backup and image handling, and service availability maintenance. Google Cybersecurity Professional Certificate holder, seeking a monitoring desk or incident resolution role.",
 };
+
+/*
+  Hero status strip. Every value here must be factually true — this component
+  borrows the language of a status page, so it must never carry invented data.
+*/
+export type StatusItem = {
+  label: string;
+  value: string;
+  state?: "ok" | "progress";
+};
+
+export const status: StatusItem[] = [
+  { label: "Availability", value: "Open to roles", state: "ok" },
+  { label: "Based in", value: "Pune, IN" },
+  { label: "Certification", value: "CCNA in progress", state: "progress" },
+];
 
 export type Experience = {
   role: string;
@@ -133,6 +155,11 @@ export const certifications: Certification[] = [
     issuer: "Google",
     topics: ["Linux", "SQL", "Network Security", "Incident Response", "Security Operations", "Risk Management", "SIEM", "Cyber Threats"],
   },
+];
+
+/* Certifications actively being worked toward. Direction matters for a junior candidate. */
+export const inProgress = [
+  { name: "CCNA / Network+", detail: "Currently studying" },
 ];
 
 export type EducationItem = {

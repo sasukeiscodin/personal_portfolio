@@ -1,34 +1,44 @@
-const devices = ["Phone", "Laptop", "Smart TV"];
+/*
+  Placeholder topology. This is a schematic of the real setup, not an artifact —
+  it is replaced in Wave 3 by a hand-authored SVG matched to the design tokens.
+*/
+const devices = ["Phone", "Laptop", "TV"];
 const services = ["Jellyfin", "Navidrome", "Samba / NAS"];
+
+function Rung() {
+  return <div className="mx-auto h-5 w-px bg-border" aria-hidden="true" />;
+}
 
 export function NetworkDiagram() {
   return (
     <div
-      className="rounded-lg border border-border bg-card p-6 font-mono text-xs sm:text-sm"
+      className="border border-border bg-panel p-8 font-mono"
       aria-hidden="true"
     >
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="flex flex-wrap justify-center gap-2">
         {devices.map((device) => (
           <span
             key={device}
-            className="rounded-md border border-border px-3 py-1.5 text-muted"
+            className="border border-border px-3 py-1.5 text-2xs uppercase tracking-[0.1em] text-muted"
           >
             {device}
           </span>
         ))}
       </div>
 
-      <div className="mx-auto my-2 h-6 w-px bg-border" />
-      <p className="text-center text-[11px] text-muted-2">LAN</p>
-      <div className="mx-auto mb-2 h-6 w-px bg-border" />
+      <Rung />
+      <p className="text-center text-2xs uppercase tracking-[0.16em] text-faint">LAN</p>
+      <Rung />
 
-      <div className="mx-auto max-w-sm rounded-md border border-primary/40 bg-bg p-4 text-center">
-        <p className="font-semibold text-text">Self-Hosted Linux Server</p>
-        <div className="mt-3 flex flex-wrap justify-center gap-2">
+      <div className="mx-auto max-w-xs border border-border-strong bg-bg p-5 text-center">
+        <p className="text-2xs font-medium uppercase tracking-[0.14em] text-text">
+          Linux Server
+        </p>
+        <div className="mt-3 flex flex-col gap-1.5">
           {services.map((service) => (
             <span
               key={service}
-              className="rounded-md border border-border px-2.5 py-1 text-[11px] text-muted"
+              className="text-2xs uppercase tracking-[0.1em] text-muted"
             >
               {service}
             </span>
@@ -36,11 +46,13 @@ export function NetworkDiagram() {
         </div>
       </div>
 
-      <div className="mx-auto my-2 h-6 w-px bg-border" />
-      <p className="text-center text-[11px] text-muted-2">Tailscale VPN · no inbound ports exposed</p>
-      <div className="mx-auto mt-2 h-6 w-px bg-border" />
+      <Rung />
+      <p className="text-center text-2xs uppercase tracking-[0.14em] text-faint">
+        Tailscale · no inbound ports
+      </p>
+      <Rung />
 
-      <div className="mx-auto w-fit rounded-md border border-signal/40 px-3 py-1.5 text-signal">
+      <div className="mx-auto w-fit border border-border px-3 py-1.5 text-2xs uppercase tracking-[0.1em] text-muted">
         Remote access
       </div>
     </div>

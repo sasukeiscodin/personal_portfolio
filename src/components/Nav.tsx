@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Container } from "./Container";
 import { profile } from "@/lib/data";
 
@@ -19,22 +19,22 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-sm">
-      <Container className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur-sm">
+      <Container className="flex h-14 items-center justify-between">
         <a
           href="#top"
-          className="font-mono text-sm font-semibold text-text"
+          className="font-mono text-2xs font-medium uppercase tracking-[0.16em] text-text"
           onClick={() => setOpen(false)}
         >
-          <span className="text-primary">~/</span>prathamesh-kasar
+          Prathamesh Kasar
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-mono text-sm text-muted transition-colors hover:text-text"
+              className="font-mono text-2xs uppercase tracking-[0.12em] text-faint transition-colors duration-100 hover:text-text"
             >
               {link.label}
             </a>
@@ -42,33 +42,32 @@ export function Nav() {
           <a
             href={profile.resumeUrl}
             download
-            className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 font-mono text-sm text-text transition-colors hover:border-border-hover hover:text-primary"
+            className="border border-border px-3 py-1.5 font-mono text-2xs uppercase tracking-[0.12em] text-muted transition-colors duration-100 hover:border-border-strong hover:text-text"
           >
-            <Download size={14} aria-hidden="true" />
             Resume
           </a>
         </nav>
 
         <button
           type="button"
-          className="text-text md:hidden"
+          className="text-muted md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </Container>
 
       {open && (
         <nav className="border-t border-border bg-bg md:hidden" aria-label="Primary">
-          <Container className="flex flex-col gap-1 py-3">
+          <Container className="flex flex-col py-2">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2 font-mono text-sm text-muted hover:bg-surface hover:text-text"
+                className="py-2.5 font-mono text-2xs uppercase tracking-[0.12em] text-muted hover:text-text"
               >
                 {link.label}
               </a>
@@ -77,9 +76,8 @@ export function Nav() {
               href={profile.resumeUrl}
               download
               onClick={() => setOpen(false)}
-              className="mt-1 flex items-center gap-1.5 rounded-md border border-border px-2 py-2 font-mono text-sm text-text"
+              className="mt-2 border-t border-border pt-3 font-mono text-2xs uppercase tracking-[0.12em] text-muted"
             >
-              <Download size={14} aria-hidden="true" />
               Resume
             </a>
           </Container>

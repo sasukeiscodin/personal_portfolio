@@ -5,26 +5,41 @@ import { homelab } from "@/lib/data";
 
 export function Homelab() {
   return (
-    <section id="homelab" className="border-b border-border py-20">
+    // Major section — deliberately given more room than the standard rhythm.
+    <section
+      id="homelab"
+      aria-labelledby="homelab-heading"
+      className="border-t border-border py-24 sm:py-32"
+    >
       <Container>
-        <SectionHeading index="03" title="Homelab" id="homelab-heading" />
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
+        <SectionHeading id="homelab-heading" label="Homelab" meta="Self-hosted" />
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           <div>
-            <h3 className="text-xl font-semibold text-text">{homelab.title}</h3>
-            <p className="mt-3 leading-relaxed text-muted">{homelab.summary}</p>
-            <ul className="mt-5 space-y-2.5">
+            <h3 className="text-xl font-medium tracking-[-0.01em] text-text">
+              {homelab.title}
+            </h3>
+            <p className="mt-4 max-w-[60ch] text-md leading-relaxed text-muted">
+              {homelab.summary}
+            </p>
+            <ul className="mt-6 space-y-2.5">
               {homelab.points.map((point) => (
-                <li key={point} className="flex gap-2 text-sm leading-relaxed text-muted">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" aria-hidden="true" />
+                <li
+                  key={point}
+                  className="flex gap-3 text-base leading-relaxed text-muted"
+                >
+                  <span
+                    className="mt-2.5 h-px w-2.5 shrink-0 bg-border-strong"
+                    aria-hidden="true"
+                  />
                   {point}
                 </li>
               ))}
             </ul>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2">
               {homelab.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md border border-border px-2.5 py-1 font-mono text-xs text-muted"
+                  className="font-mono text-2xs uppercase tracking-[0.1em] text-faint"
                 >
                   {tech}
                 </span>

@@ -4,11 +4,15 @@ import { education } from "@/lib/data";
 
 export function About() {
   return (
-    <section id="about" className="border-b border-border py-20">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="border-t border-border py-20 sm:py-24"
+    >
       <Container>
-        <SectionHeading index="01" title="About" id="about-heading" />
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div className="space-y-4 leading-relaxed text-muted">
+        <SectionHeading id="about-heading" label="About" />
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+          <div className="max-w-[68ch] space-y-4 text-md leading-relaxed text-muted">
             <p>
               I&apos;m a Computer Engineering graduate from Savitribai Phule Pune University with a
               practical, hands-on relationship to Linux. Since 2023, I&apos;ve provided IT support —
@@ -28,15 +32,24 @@ export function About() {
             </p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="font-mono text-sm text-muted-2 uppercase tracking-wide">Education</h3>
-            {education.map((item) => (
-              <div key={item.school} className="rounded-lg border border-border bg-card p-4">
-                <p className="font-medium text-text">{item.credential}</p>
-                <p className="mt-1 text-sm text-muted">{item.school}</p>
-                <p className="mt-1 font-mono text-xs text-muted-2">{item.period}</p>
-              </div>
-            ))}
+          <div>
+            <h3 className="mb-4 font-mono text-2xs uppercase tracking-[0.18em] text-faint">
+              Education
+            </h3>
+            <div className="space-y-px">
+              {education.map((item) => (
+                <div
+                  key={item.school}
+                  className="border-t border-border py-4 first:border-t-0 first:pt-0"
+                >
+                  <p className="text-base font-medium text-text">{item.credential}</p>
+                  <p className="mt-1.5 text-sm text-muted">{item.school}</p>
+                  <p className="mt-1.5 font-mono text-2xs tracking-[0.08em] text-faint">
+                    {item.period}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Container>
