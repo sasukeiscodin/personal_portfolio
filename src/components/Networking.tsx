@@ -25,7 +25,7 @@ function Group({ label, items }: { label: string; items: string[] }) {
 
 export function Networking() {
   return (
-    <Section id="networking" label="Networking" meta="CCNA in progress">
+    <Section id="networking" label="Networking" meta="CCNA in progress" dense>
       <p className="max-w-[62ch] text-md leading-relaxed text-muted">
         {networking.summary}
       </p>

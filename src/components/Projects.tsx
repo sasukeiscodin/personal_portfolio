@@ -6,7 +6,7 @@ import { archProject, archArtifacts } from "@/lib/data";
 
 export function Projects() {
   return (
-    <Section id="projects" label="Projects">
+    <Section id="projects" label="Projects" dense>
       <Panel label="Arch Linux" meta="Daily driver">
         <h3 className="text-xl font-medium tracking-[-0.01em] text-text">
           <MaskText delay={300}>{archProject.title}</MaskText>

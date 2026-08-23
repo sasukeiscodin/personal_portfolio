@@ -15,7 +15,9 @@ const services = ["Jellyfin", "Navidrome", "Samba / NAS"];
 function Rung({ delay }: { delay?: number }) {
   return (
     <div
-      className={`mx-auto h-5 w-px bg-border ${delay === undefined ? "" : "pulse-link"}`}
+      className={`topo-link mx-auto h-5 w-px bg-border ${
+        delay === undefined ? "" : "pulse-link"
+      }`}
       style={
         delay === undefined
           ? undefined
@@ -29,7 +31,7 @@ function Rung({ delay }: { delay?: number }) {
 export function NetworkDiagram() {
   return (
     <Panel label="Topology" meta="LAN + Tailscale">
-      <div className="font-mono" aria-hidden="true">
+      <div className="topo font-mono" aria-hidden="true">
         <div className="flex flex-wrap justify-center gap-2">
           {devices.map((device) => (
             <span
@@ -49,11 +51,11 @@ export function NetworkDiagram() {
           <p className="text-2xs font-medium uppercase tracking-[0.14em] text-text">
             Linux Server
           </p>
-          <div className="mt-3 flex flex-col gap-1.5">
+          <div className="topo-services mt-3 flex flex-col gap-1.5">
             {services.map((service) => (
               <span
                 key={service}
-                className="text-2xs uppercase tracking-[0.1em] text-muted"
+                className="topo-service text-2xs uppercase tracking-[0.1em] text-muted"
               >
                 {service}
               </span>

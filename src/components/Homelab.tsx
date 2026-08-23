@@ -6,7 +6,7 @@ import { homelab, homelabArtifacts } from "@/lib/data";
 
 export function Homelab() {
   return (
-    <Section id="homelab" label="Homelab" meta="Self-hosted" major>
+    <Section id="homelab" label="Homelab" meta="Self-hosted" major dense>
       <div className="grid gap-12 xl:grid-cols-[1.15fr_1fr] xl:items-start">
         <div>
           <h3 className="text-xl font-medium tracking-[-0.01em] text-text">

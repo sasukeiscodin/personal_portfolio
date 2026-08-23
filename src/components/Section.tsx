@@ -20,6 +20,7 @@ export function Section({
   meta,
   major = false,
   ledger = false,
+  dense = false,
   children,
 }: {
   id: string;
@@ -27,6 +28,8 @@ export function Section({
   meta?: string;
   major?: boolean;
   ledger?: boolean;
+  /* Technical sections carry a tighter grid than prose sections. */
+  dense?: boolean;
   children: ReactNode;
 }) {
   return (
@@ -35,12 +38,18 @@ export function Section({
       aria-labelledby={`${id}-heading`}
       data-reveal
       // Heavier sections come up more deliberately: pacing carries weight.
-      style={{ "--pace": major ? 1.35 : 1 } as CSSProperties}
+      style={
+        {
+          "--pace": major ? 1.35 : 1,
+          "--grid-size": dense ? "48px" : "72px",
+        } as CSSProperties
+      }
       className={`relative border-t border-border ${
         major ? "py-24 sm:py-32" : "py-20 sm:py-24"
       }`}
     >
-      <Container>
+      <div className="section-grid" aria-hidden="true" />
+      <Container className="relative">
         <div
           data-reveal-content
           className="grid gap-x-10 gap-y-8 lg:grid-cols-[7rem_1fr]"

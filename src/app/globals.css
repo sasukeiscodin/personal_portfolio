@@ -497,6 +497,70 @@ body::before {
 }
 
 /*
+  Targeting bracket shown over technical zones. Sits around the real cursor,
+  never in place of it.
+*/
+.reticle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  pointer-events: none;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 180ms var(--ease-response);
+}
+
+.reticle.is-on {
+  opacity: 1;
+}
+
+/*
+  Topology response. Hovering the diagram lights the whole path, which is true:
+  every service is reachable across the LAN and remotely over Tailscale.
+  Hovering one service isolates it without hiding the others.
+*/
+.topo-link {
+  transition: background var(--dur-response) var(--ease-response);
+}
+
+.topo:hover .topo-link {
+  background: var(--faint);
+}
+
+.topo-service {
+  transition:
+    opacity var(--dur-response) var(--ease-response),
+    color var(--dur-response) var(--ease-response);
+}
+
+.topo-services:hover .topo-service {
+  opacity: 0.35;
+}
+
+.topo-services .topo-service:hover {
+  opacity: 1;
+  color: var(--text);
+}
+
+/*
+  Section grid. Structure shows at the seam where a section begins and fades out
+  before it can compete with the content, so the system is visible at its joins
+  rather than washed uniformly across the page.
+*/
+.section-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size, 72px) var(--grid-size, 72px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 24%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 24%);
+}
+
+/*
   Buttons fill from the left instead of dropping opacity. Opacity fade on a
   solid button reads as the button switching off; a sweep reads as a response.
 */

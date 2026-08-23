@@ -19,6 +19,7 @@ export function Panel({
 }) {
   return (
     <div
+      data-probe
       className={`panel border border-border bg-panel transition-colors duration-200 hover:border-border-strong ${className}`}
     >
       {(label || meta) && (
