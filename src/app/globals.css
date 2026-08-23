@@ -28,6 +28,29 @@
 
   /* Background texture */
   --grid-line: rgba(255, 255, 255, 0.03);
+
+  /*
+    Motion tiers.
+
+    Every animation on this site belongs to exactly one tier and never borrows
+    another tier's timing. That single constraint is what makes the motion read
+    as one language instead of a pile of effects.
+
+      1 System     boot, section provisioning
+      2 Component  rows and panels resolving
+      3 Response   hover, focus, direct manipulation
+      4 Ambient    health checks, traffic
+  */
+  --dur-system: 900ms;
+  --dur-component: 520ms;
+  --dur-response: 160ms;
+
+  --ease-system: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-component: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-response: ease-out;
+
+  /* Per-section multiplier: heavier sections come up more deliberately. */
+  --pace: 1;
 }
 
 @theme inline {
@@ -141,6 +164,7 @@ body::before {
     border-top-color: transparent;
   }
 
+  /* Tier 1: the section's own allocation. Scales with section weight. */
   [data-reveal]::before {
     content: "";
     position: absolute;
@@ -151,21 +175,21 @@ body::before {
     background: var(--border);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform calc(var(--dur-system) * var(--pace)) var(--ease-system);
   }
 
   [data-reveal].is-visible::before {
     transform: scaleX(1);
   }
 
-  /* Content rises further and slower than before, so the arrival registers. */
+  /* Tier 2: content resolves once the allocation has begun. */
   [data-reveal-content] {
     opacity: 0;
     transform: translateY(22px);
     transition:
-      opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
-    transition-delay: 120ms;
+      opacity calc(var(--dur-component) * var(--pace)) var(--ease-component),
+      transform calc(var(--dur-component) * var(--pace)) var(--ease-component);
+    transition-delay: calc(180ms * var(--pace));
   }
 
   [data-reveal].is-visible [data-reveal-content] {
@@ -241,20 +265,30 @@ body::before {
 }
 
 /*
-  Entrance. A clip wipe rather than a fade: mono type resolving upward reads as a
-  system rendering a line, which suits the concept better than a typewriter
-  effect. `both` fill mode means reduced-motion users land on the end state.
+  Masked line reveal. Text rises from behind a hard clip edge rather than fading,
+  so it reads as a line being rendered rather than an element appearing. Applied
+  per word so it survives wrapping without measuring anything in JavaScript.
 */
-@keyframes enter-wipe {
+.mask-line {
+  display: inline-block;
+  overflow: hidden;
+  /* Room for descenders, removed again so layout is unchanged. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.mask-line > span {
+  display: inline-block;
+  animation: mask-rise calc(var(--dur-system) * 0.8) var(--ease-system) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes mask-rise {
   from {
-    opacity: 0;
-    clip-path: inset(105% 0 0 0);
-    transform: translateY(10px);
+    transform: translateY(105%);
   }
   to {
-    opacity: 1;
-    clip-path: inset(-25% 0 0 0);
-    transform: none;
+    transform: translateY(0);
   }
 }
 
@@ -269,14 +303,84 @@ body::before {
   }
 }
 
-.enter-wipe {
-  animation: enter-wipe 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+.enter-rise {
+  animation: enter-rise var(--dur-component) var(--ease-component) both;
   animation-delay: var(--d, 0ms);
 }
 
-.enter-rise {
-  animation: enter-rise 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+/*
+  A status square resolving: it appears dim, flicks to the in-progress colour
+  while the check runs, then settles on its real state. Watching availability
+  come up green is the one moment on this page worth waiting for.
+*/
+@keyframes state-resolve {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+    background: var(--faint);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+    background: var(--state-progress);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    background: var(--state-color);
+  }
+}
+
+.state-boot {
+  animation: state-resolve var(--dur-system) var(--ease-system) both;
   animation-delay: var(--d, 0ms);
+}
+
+/* Grid rules itself in left to right as the first act of the boot. */
+@keyframes grid-rule-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.grid-rule-in {
+  animation: grid-rule-in calc(var(--dur-system) * 1.3) var(--ease-system) both;
+}
+
+/*
+  Tier 4 ambient: a slow sweep across the hero grid so the first screen keeps
+  breathing instead of dying the moment the boot finishes.
+*/
+@keyframes grid-ambient-sweep {
+  0% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    transform: translateX(420%);
+    opacity: 0;
+  }
+}
+
+.grid-ambient {
+  width: 26%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  animation: grid-ambient-sweep 9s ease-in-out 2.2s infinite;
 }
 
 /*
@@ -288,8 +392,8 @@ body::before {
     opacity: 0;
     transform: translateY(16px);
     transition:
-      opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+      opacity var(--dur-component) var(--ease-component),
+      transform var(--dur-component) var(--ease-component);
   }
 
   .is-visible [data-stagger] > * {
@@ -297,14 +401,20 @@ body::before {
     transform: none;
   }
 
-  /* Rows arrive one after another rather than as a block. */
-  .is-visible [data-stagger] > *:nth-child(1) { transition-delay: 200ms; }
-  .is-visible [data-stagger] > *:nth-child(2) { transition-delay: 280ms; }
-  .is-visible [data-stagger] > *:nth-child(3) { transition-delay: 360ms; }
-  .is-visible [data-stagger] > *:nth-child(4) { transition-delay: 440ms; }
-  .is-visible [data-stagger] > *:nth-child(5) { transition-delay: 520ms; }
-  .is-visible [data-stagger] > *:nth-child(6) { transition-delay: 600ms; }
-  .is-visible [data-stagger] > *:nth-child(n + 7) { transition-delay: 680ms; }
+  /*
+    Rhythm carries meaning. A narrative list cascades; a table of capabilities
+    resolves almost at once, the way a set of checks returns together.
+  */
+  [data-stagger] { --step: 80ms; --lead: 200ms; }
+  [data-stagger="tight"] { --step: 26ms; --lead: 160ms; }
+
+  .is-visible [data-stagger] > *:nth-child(1) { transition-delay: var(--lead); }
+  .is-visible [data-stagger] > *:nth-child(2) { transition-delay: calc(var(--lead) + var(--step)); }
+  .is-visible [data-stagger] > *:nth-child(3) { transition-delay: calc(var(--lead) + var(--step) * 2); }
+  .is-visible [data-stagger] > *:nth-child(4) { transition-delay: calc(var(--lead) + var(--step) * 3); }
+  .is-visible [data-stagger] > *:nth-child(5) { transition-delay: calc(var(--lead) + var(--step) * 4); }
+  .is-visible [data-stagger] > *:nth-child(6) { transition-delay: calc(var(--lead) + var(--step) * 5); }
+  .is-visible [data-stagger] > *:nth-child(n + 7) { transition-delay: calc(var(--lead) + var(--step) * 6); }
 }
 
 /*

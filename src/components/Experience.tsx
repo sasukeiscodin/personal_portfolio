@@ -5,7 +5,7 @@ export function Experience() {
   return (
     <Section id="experience" label="Experience" ledger>
       {/* Rows join the section grid so dates align under the section label. */}
-      <ol data-stagger className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
+      <ol data-stagger="cascade" className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
         {experience.map((job) => (
           <li
             key={`${job.role}-${job.org}`}

@@ -57,13 +57,19 @@ export function HeroGrid() {
 
   return (
     <>
+      {/* Act one of the boot: the grid rules itself in before anything else. */}
       <div
-        className="schematic-grid pointer-events-none absolute inset-0"
+        className="schematic-grid grid-rule-in pointer-events-none absolute inset-0"
         aria-hidden="true"
       />
       <div
         ref={torch}
         className="grid-torch pointer-events-none absolute inset-0"
+        aria-hidden="true"
+      />
+      {/* Tier 4: keeps the first screen alive once the boot has settled. */}
+      <div
+        className="grid-ambient pointer-events-none absolute inset-y-0 left-0"
         aria-hidden="true"
       />
     </>

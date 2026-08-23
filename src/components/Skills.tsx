@@ -4,7 +4,7 @@ import { skills } from "@/lib/data";
 export function Skills() {
   return (
     <Section id="skills" label="Skills" ledger>
-      <dl data-stagger className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
+      <dl data-stagger="tight" className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
         {skills.map((group) => (
           <div
             key={group.category}

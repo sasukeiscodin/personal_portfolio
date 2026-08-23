@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { type CSSProperties, type ReactNode } from "react";
 import { Container } from "./Container";
 
 /*
@@ -33,6 +33,8 @@ export function Section({
       id={id}
       aria-labelledby={`${id}-heading`}
       data-reveal
+      // Heavier sections come up more deliberately: pacing carries weight.
+      style={{ "--pace": major ? 1.35 : 1 } as CSSProperties}
       className={`relative border-t border-border ${
         major ? "py-24 sm:py-32" : "py-20 sm:py-24"
       }`}

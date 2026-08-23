@@ -46,7 +46,7 @@ function Row({
 export function Certifications() {
   return (
     <Section id="certifications" label="Certifications" ledger>
-      <div data-stagger className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
+      <div data-stagger="cascade" className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
         {certifications.map((cert) => (
           <Row
             key={cert.name}
