@@ -13,14 +13,29 @@ export function Skills() {
             <dt className="font-mono text-2xs uppercase leading-relaxed tracking-[0.12em] text-faint lg:pt-0.5">
               {group.category}
             </dt>
-            <dd className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-muted lg:mt-0">
-              {group.items.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
+            <dd className="mt-2 space-y-1.5 lg:mt-0">
+              <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-text">
+                {group.handsOn.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+              {group.familiar && (
+                <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-faint">
+                  {group.familiar.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              )}
             </dd>
           </div>
         ))}
       </dl>
+
+      {/* Legend — without it the two tones are just a styling quirk. */}
+      <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 border-t border-border pt-5 font-mono text-2xs uppercase tracking-[0.1em] lg:col-start-2">
+        <span className="text-text">Hands-on</span>
+        <span className="text-faint">Studied, not yet demonstrated</span>
+      </div>
     </Section>
   );
 }

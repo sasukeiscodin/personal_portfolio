@@ -37,6 +37,8 @@ export type Experience = {
   role: string;
   org: string;
   period: string;
+  /* Shown under the org line — used for context the period alone can't carry. */
+  note?: string;
   points: string[];
 };
 
@@ -56,20 +58,13 @@ export const experience: Experience[] = [
   {
     role: "Data Analyst & Python Developer",
     org: "Future Market Insights, Pune",
-    period: "Aug 2026 — Present",
+    period: "Mar 2026 — Present",
+    note: "Joined as Data Analyst Intern; converted to full-time in August 2026.",
     points: [
       "Automated repetitive data workflows using Python scripts, reducing manual effort and improving turnaround time.",
       "Performed troubleshooting and issue resolution on data pipelines, automation processes, and reporting systems.",
       "Maintained documentation of methodologies, code changes, and process improvements for team traceability.",
       "Built interactive dashboards and analytical reports using Power BI and Excel for stakeholder reporting.",
-    ],
-  },
-  {
-    role: "Data Analyst Intern",
-    org: "Future Market Insights, Pune",
-    period: "Mar 2026 — Aug 2026",
-    points: [
-      "Preceded the full-time Data Analyst & Python Developer role at the same organization.",
     ],
   },
 ];
@@ -90,7 +85,7 @@ export const homelab: LabProject = {
     "Hosts media (Jellyfin), music (Navidrome), and network-attached storage for continuous service availability.",
     "Configured Samba (SMB) file-sharing for centralized cross-device access across the local network.",
     "Implemented secure remote access via Tailscale mesh VPN without exposing inbound ports.",
-    "Monitors server health, service uptime, and storage utilization; performs ongoing patch management and troubleshooting.",
+    "Checks service health, uptime, and storage utilization from the command line (systemctl, journalctl, df, htop); performs ongoing patch management and troubleshooting.",
     "Manages end-to-end server operations: networking, user access, storage, and application-level service configuration.",
   ],
 };
@@ -109,37 +104,62 @@ export const archProject: LabProject = {
 
 export type SkillGroup = {
   category: string;
-  items: string[];
+  /* Backed by something concrete elsewhere on this page or by paid work. */
+  handsOn: string[];
+  /* Studied or used incidentally, with no artifact behind it. Honest tiering is
+     more persuasive than a longer flat list — and it survives an interview. */
+  familiar?: string[];
 };
 
 export const skills: SkillGroup[] = [
   {
     category: "Linux Administration",
-    items: ["Arch Linux", "Debian-based", "System installation", "Configuration & troubleshooting", "Performance tuning"],
+    handsOn: ["Arch Linux", "Debian-based", "System installation", "Configuration & troubleshooting"],
+    familiar: ["Performance tuning"],
   },
   {
     category: "Server Operations",
-    items: ["Service deployment", "Uptime monitoring", "Patch management", "Backup & image handling", "User access management"],
+    handsOn: [
+      "Service deployment",
+      "Health checks (systemctl, journalctl, df, htop)",
+      "Patch management",
+      "Backup & image handling",
+      "User access management",
+    ],
   },
   {
     category: "Networking",
-    items: ["TCP/IP", "LAN/WAN", "DNS", "DHCP", "IP addressing", "VPN (Tailscale)", "Network troubleshooting"],
+    handsOn: [
+      "TCP/IP",
+      "DNS",
+      "DHCP",
+      "IP addressing",
+      "VPN (Tailscale)",
+      "Network troubleshooting",
+      "Wireshark",
+      "Packet Tracer / GNS3",
+    ],
+    familiar: ["LAN/WAN"],
   },
   {
     category: "Programming & Scripting",
-    items: ["Python (automation, scripting)", "SQL"],
+    handsOn: ["Python (automation, scripting)"],
+    familiar: ["SQL"],
   },
   {
     category: "Self-Hosting & Services",
-    items: ["Jellyfin", "Navidrome", "Samba/SMB", "NAS", "Virtualization (VMware)"],
+    handsOn: ["Jellyfin", "Navidrome", "Samba/SMB", "NAS"],
+    familiar: ["Virtualization (VMware)"],
   },
   {
     category: "Security",
-    items: ["Network security", "Security operations", "Threat detection", "Risk management"],
+    handsOn: ["Secure remote access (no exposed ports)"],
+    familiar: ["Network security", "Security operations", "Threat detection", "Risk management"],
   },
   {
     category: "Tools",
-    items: ["Git", "GitHub", "VS Code", "Power BI", "MS Office", "VMware"],
+    handsOn: ["Git", "GitHub", "VS Code", "Power BI", "Excel"],
+    familiar: ["VMware"],
   },
 ];
 

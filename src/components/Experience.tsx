@@ -17,6 +17,9 @@ export function Experience() {
             <div className="mt-3 lg:mt-0">
               <h3 className="text-lg font-medium tracking-[-0.01em] text-text">{job.role}</h3>
               <p className="mt-1 text-sm text-muted">{job.org}</p>
+              {job.note && (
+                <p className="mt-1 text-sm text-faint">{job.note}</p>
+              )}
               <ul className="mt-4 max-w-[76ch] space-y-2.5">
                 {job.points.map((point) => (
                   <li
