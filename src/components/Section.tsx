@@ -32,6 +32,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
+      data-reveal
       className={`border-t border-border ${major ? "py-24 sm:py-32" : "py-20 sm:py-24"}`}
     >
       <Container>

@@ -7,8 +7,13 @@ import { Panel } from "./Panel";
 const devices = ["Phone", "Laptop", "TV"];
 const services = ["Jellyfin", "Navidrome", "Samba / NAS"];
 
-function Rung() {
-  return <div className="mx-auto h-5 w-px bg-border" aria-hidden="true" />;
+function Rung({ pulse = false }: { pulse?: boolean }) {
+  return (
+    <div
+      className={`mx-auto h-5 w-px bg-border ${pulse ? "pulse-link" : ""}`}
+      aria-hidden="true"
+    />
+  );
 }
 
 export function NetworkDiagram() {
@@ -28,7 +33,7 @@ export function NetworkDiagram() {
 
         <Rung />
         <p className="text-center text-2xs uppercase tracking-[0.16em] text-faint">LAN</p>
-        <Rung />
+        <Rung pulse />
 
         <div className="mx-auto max-w-xs border border-border-strong bg-bg p-5 text-center">
           <p className="text-2xs font-medium uppercase tracking-[0.14em] text-text">

@@ -1,5 +1,6 @@
 import { Rail } from "@/components/Rail";
 import { MobileNav } from "@/components/MobileNav";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Experience } from "@/components/Experience";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Rail />
       <MobileNav />
+      <ScrollReveal />
       {/* Offset clears the fixed rail; below its breakpoint the page is full width. */}
       <div className="lg:pl-[168px]">
         <main>
