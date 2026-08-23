@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, Terminal } from "lucide-react";
 import { Container } from "./Container";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { profile } from "@/lib/data";
@@ -60,6 +60,15 @@ export function Hero() {
               className="text-muted transition-colors hover:text-text"
             >
               <LinkedinIcon size={20} />
+            </a>
+            <a
+              href={profile.tryhackme}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="TryHackMe profile"
+              className="text-muted transition-colors hover:text-text"
+            >
+              <Terminal size={20} />
             </a>
             <a
               href={`mailto:${profile.email}`}

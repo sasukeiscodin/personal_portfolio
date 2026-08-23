@@ -5,6 +5,7 @@ export const profile = {
   email: "prathameshsk1@gmail.com",
   github: "https://github.com/sasukeiscodin",
   linkedin: "https://www.linkedin.com/in/prathameshkasar/",
+  tryhackme: "https://tryhackme.com/p/sasukeusingthm",
   resumeUrl: "/resume/Prathamesh_Kasar_Resume.pdf",
   summary:
     "Computer Engineering graduate with hands-on Linux system administration experience, including building and maintaining a self-hosted multi-service Linux server from scratch. Diagnoses and resolves system-level, network, and application issues through ongoing IT support since 2023. Experienced in server health monitoring, patch management, backup and image handling, and service availability maintenance. Google Cybersecurity Professional Certificate holder, seeking a monitoring desk or incident resolution role.",

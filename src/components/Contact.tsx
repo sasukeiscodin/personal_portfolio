@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, Terminal } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Container } from "./Container";
 import { GithubIcon, LinkedinIcon } from "./icons";
@@ -42,6 +42,15 @@ export function Contact() {
             >
               <LinkedinIcon size={16} />
               LinkedIn
+            </a>
+            <a
+              href={profile.tryhackme}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex items-center gap-2 transition-colors hover:text-text"
+            >
+              <Terminal size={16} aria-hidden="true" />
+              TryHackMe
             </a>
           </div>
         </div>
