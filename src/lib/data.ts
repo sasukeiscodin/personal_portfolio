@@ -7,8 +7,13 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/prathameshkasar/",
   tryhackme: "https://tryhackme.com/p/sasukeusingthm",
   resumeUrl: "/resume/Prathamesh_Kasar_Resume.pdf",
+  /*
+    The filename carries a version suffix. Browsers and the CDN cache this
+    aggressively, so replacing the image in place leaves people looking at the
+    old one. Bump the number whenever the photo changes.
+  */
   photo: {
-    src: "/images/profile/portrait.jpg",
+    src: "/images/profile/portrait-v2.jpg",
     alt: "Prathamesh Kasar",
     width: 800,
     height: 800,
