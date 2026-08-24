@@ -15,8 +15,9 @@ export function Contact() {
     <Section id="contact" label="Contact">
       <div className="max-w-xl">
         <p className="text-md leading-relaxed text-muted">
-          I&apos;m looking for Linux system administration, monitoring desk, or incident
-          resolution roles. If you&apos;re hiring or want to talk shop, reach out directly.
+          I&apos;m looking for Linux administration, network operations, monitoring, or incident
+          response work. If you&apos;re hiring, or you have a question about anything here, email
+          is the fastest way to reach me.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">

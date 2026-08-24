@@ -20,7 +20,7 @@ const plexMono = IBM_Plex_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 const title = "Prathamesh Kasar | Linux Systems Administrator";
 const description =
-  "Computer Engineering graduate with hands-on Linux system administration experience: self-hosted server infrastructure, network troubleshooting, monitoring, and automation.";
+  "Linux systems administration and networking. I run a self-hosted multi-service server, troubleshoot systems and networks, and hold the Google Cybersecurity Professional Certificate. Based in Pune, India.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

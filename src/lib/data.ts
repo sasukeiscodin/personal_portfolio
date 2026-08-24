@@ -1,7 +1,5 @@
 export const profile = {
   name: "Prathamesh Kasar",
-  // `title` drives page metadata; `tagline` is the shorter hero display line.
-  title: "Linux System Administration · Server Monitoring · Incident Resolution",
   tagline: "Linux Systems · Networking · Server Monitoring",
   location: "Hinjewadi, Pune, India",
   email: "prathameshsk1@gmail.com",
@@ -9,12 +7,12 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/prathameshkasar/",
   tryhackme: "https://tryhackme.com/p/sasukeusingthm",
   resumeUrl: "/resume/Prathamesh_Kasar_Resume.pdf",
-  // Hero intro: first person, leads with the pivot. Kept to two sentences;
-  // the fuller version lives in `summary` and in the About section.
+  /*
+    Two sentences: what I do, and where it came from. Availability and the CCNA
+    live in the status strip, so this does not repeat them.
+  */
   intro:
-    "I automate data workflows in Python by day, and the rest of my time goes to a Linux server I built from a repurposed PC. I'm working toward a CCNA and a full-time move into infrastructure.",
-  summary:
-    "Computer Engineering graduate with hands-on Linux system administration experience, including building and maintaining a self-hosted multi-service Linux server from scratch. Diagnoses and resolves system-level, network, and application issues through ongoing IT support since 2023. Experienced in server health monitoring, patch management, backup and image handling, and service availability maintenance. Google Cybersecurity Professional Certificate holder, seeking a monitoring desk or incident resolution role.",
+    "I administer Linux systems and troubleshoot networks. Most of that came from running my own server rather than from coursework, and from three years of fixing whatever people brought me.",
 };
 
 /*
@@ -48,11 +46,11 @@ export const experience: Experience[] = [
     org: "Volunteer / Personal",
     period: "2023 - Present",
     points: [
-      "Diagnosed and resolved Windows OS, boot, driver, network, and software issues for friends, family, and local users, serving as first point of contact for incident triage and resolution.",
-      "Performed system backup and image management, including OS reimaging and restore operations on workstations.",
-      "Managed operating system patch deployment and software updates to maintain system security and stability.",
-      "Troubleshot network connectivity issues including TCP/IP configuration, DNS resolution, printer sharing, and Wi-Fi problems.",
-      "Documented recurring issues and applied preventive maintenance to reduce repeat incidents and improve system uptime.",
+      "First contact for Windows failures: boot problems, drivers, and software that stopped working.",
+      "Reimaged workstations and handled backups and restores when a repair was not the answer.",
+      "Kept machines patched and updated instead of waiting for something to break.",
+      "Traced connectivity faults across TCP/IP settings, DNS resolution, printer sharing, and Wi-Fi.",
+      "Wrote down the problems that kept recurring, which is how most of them stopped recurring.",
     ],
   },
   {
@@ -61,10 +59,10 @@ export const experience: Experience[] = [
     period: "Mar 2026 - Present",
     note: "Joined as Data Analyst Intern; converted to full-time in August 2026.",
     points: [
-      "Automated repetitive data workflows using Python scripts, reducing manual effort and improving turnaround time.",
-      "Performed troubleshooting and issue resolution on data pipelines, automation processes, and reporting systems.",
-      "Maintained documentation of methodologies, code changes, and process improvements for team traceability.",
-      "Built interactive dashboards and analytical reports using Power BI and Excel for stakeholder reporting.",
+      "Write Python to replace data work that was being done by hand.",
+      "Debug pipelines, automation, and reporting systems when they break.",
+      "Keep documentation current: methods, code changes, and how a process changed.",
+      "Build dashboards and reports in Power BI and Excel.",
     ],
   },
 ];
@@ -79,26 +77,26 @@ export type LabProject = {
 export const homelab: LabProject = {
   title: "Self-Hosted Linux Server",
   summary:
-    "Built and administer a multi-service Linux server on a repurposed PC for continuous media, file, and storage availability on the local network.",
+    "An old desktop rebuilt into a server. It handles media, music, and file storage for every device in the house, and I run all of it.",
   stack: ["Linux", "Jellyfin", "Navidrome", "Samba/SMB", "NAS", "Tailscale"],
   points: [
-    "Hosts media (Jellyfin), music (Navidrome), and network-attached storage for continuous service availability.",
-    "Configured Samba (SMB) file-sharing for centralized cross-device access across the local network.",
-    "Implemented secure remote access via Tailscale mesh VPN without exposing inbound ports.",
-    "Checks service health, uptime, and storage utilization from the command line (systemctl, journalctl, df, htop); performs ongoing patch management and troubleshooting.",
-    "Manages end-to-end server operations: networking, user access, storage, and application-level service configuration.",
+    "Jellyfin for media, Navidrome for music, and network-attached storage for everything else.",
+    "Samba shares so every device on the network reaches the same files.",
+    "Remote access over a Tailscale mesh, with nothing exposed to the internet.",
+    "Service health, uptime, and disk usage checked from the command line: systemctl, journalctl, df, htop.",
+    "Everything else running it involves: storage layout, user access, patching, and whatever breaks.",
   ],
 };
 
 export const archProject: LabProject = {
-  title: "Linux System Customization & Administration (Arch Linux)",
+  title: "Arch Linux, installed from the base system up",
   summary:
-    "Installed and configured Arch Linux from scratch into a fully functional daily-driver environment.",
+    "Nothing about this install was preconfigured, which was the point. It is the machine I use every day.",
   stack: ["Arch Linux", "i3wm", "pacman"],
   points: [
-    "Installed and configured Arch Linux from scratch: disk partitioning, bootloader, base system, networking, and user environment.",
-    "Configured the i3 window manager, system services, audio, fonts, and desktop utilities into a daily-driver setup.",
-    "Managed packages and system-level dependencies using pacman; resolved dependency conflicts and system breakages.",
+    "Partitioned the disk, installed the bootloader and base system, and set up networking and users by hand.",
+    "Configured i3, system services, audio, fonts, and the rest of the desktop until it was usable full time.",
+    "Manage packages with pacman, including dependency conflicts and the occasional system I have had to repair.",
   ],
 };
 
@@ -110,16 +108,16 @@ export const archProject: LabProject = {
 */
 export const networking = {
   summary:
-    "Protocol-level troubleshooting on real machines, plus simulated topologies and packet analysis while working toward the CCNA.",
+    "Most of my networking is diagnostic: working out why one machine cannot reach another. The rest is lab work, building topologies and reading captures to see what is actually happening on the wire.",
   applied: [
-    "Diagnose TCP/IP configuration, DNS resolution, and DHCP issues as first point of contact, ongoing since 2023.",
-    "Resolve Wi-Fi, connectivity, and printer and file-sharing faults across mixed Windows and Linux devices.",
-    "Run a Tailscale mesh VPN for remote access to the home server without exposing any inbound ports.",
-    "Configured Samba (SMB) for centralized cross-device access across the local network.",
+    "TCP/IP configuration, DNS resolution, and DHCP faults, as first contact since 2023.",
+    "Wi-Fi, connectivity, printer sharing, and file sharing across mixed Windows and Linux machines.",
+    "A Tailscale mesh for remote access to the home server, with no inbound ports open.",
+    "Samba shares reachable from every device on the local network.",
   ],
   lab: [
-    "Build and test network topologies in Cisco Packet Tracer and GNS3.",
-    "Analyze captured traffic in Wireshark to trace connectivity faults and protocol behaviour.",
+    "Topologies built and tested in Cisco Packet Tracer and GNS3.",
+    "Traffic captures read in Wireshark to trace faults and follow protocol behaviour.",
   ],
   stack: ["TCP/IP", "DNS", "DHCP", "Tailscale", "Wireshark", "Packet Tracer", "GNS3"],
 };

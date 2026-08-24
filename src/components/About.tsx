@@ -7,21 +7,23 @@ export function About() {
       <div className="grid gap-12 xl:grid-cols-[1.5fr_1fr]">
         <div className="max-w-[66ch] space-y-4 text-md leading-relaxed text-muted">
           <p>
-            I&apos;m a Computer Engineering graduate from Savitribai Phule Pune University with a
-            practical, hands-on relationship to Linux. Since 2023, I&apos;ve provided IT support:
-            diagnosing OS, driver, network, and connectivity issues, managing backups and system
-            images, and applying patches to keep machines stable and secure.
+            I studied Computer Engineering at Savitribai Phule Pune University. Most of what I
+            know about Linux and networking came from practice rather than from a syllabus: a
+            server built out of an old desktop, a workstation installed from the base system up,
+            and a lot of time spent working out why something had stopped working.
           </p>
           <p>
-            Outside of that, I run a self-hosted Linux server that I built and maintain end to
-            end: storage, networking, user access, and service configuration. I also installed
-            and configured Arch Linux from scratch, down to partitioning and the window manager,
-            because I wanted to actually understand the system rather than accept the defaults.
+            The server handles media, music, and file storage for everything in the house, with
+            remote access over a Tailscale mesh so nothing has to be exposed to the internet. I
+            own all of it, from the storage layout and user access to patching and the failures.
+            The workstation runs Arch, configured by hand, because defaults tend to hide the parts
+            worth understanding.
           </p>
           <p>
-            I hold the Google Cybersecurity Professional Certificate and I&apos;m looking to move
-            into a monitoring desk or incident resolution role where that combination of Linux
-            administration, networking, and security fundamentals is put to use daily.
+            The problems I like are diagnostic ones. A service that will not start, a machine that
+            will not route, a disk filling up for no reason anyone can name. I have been the first
+            person called for that since 2023. I am working toward a CCNA and looking for systems
+            or network operations work where this is the job rather than what I do after hours.
           </p>
         </div>
 
