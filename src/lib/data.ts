@@ -13,7 +13,7 @@ export const profile = {
     old one. Bump the number whenever the photo changes.
   */
   photo: {
-    src: "/images/profile/portrait-v4.jpg",
+    src: "/images/profile/portrait-v5.jpg",
     alt: "Prathamesh Kasar",
     width: 800,
     height: 800,
