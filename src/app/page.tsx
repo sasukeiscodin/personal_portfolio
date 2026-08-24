@@ -65,8 +65,11 @@ export default function Home() {
       <ScrollReveal />
       <Reticle />
 
-      {/* Offset clears the fixed rail; below its breakpoint the page is full width. */}
-      <div className="lg:pl-[168px]">
+      {/*
+        Left offset clears the fixed rail on desktop; bottom padding clears the
+        mobile navigator so it never covers the footer.
+      */}
+      <div className="pb-14 lg:pb-0 lg:pl-[168px]">
         <main id="main">
           <Hero />
           <About />

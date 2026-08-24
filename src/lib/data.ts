@@ -138,16 +138,6 @@ export const skills: SkillGroup[] = [
     familiar: ["Performance tuning"],
   },
   {
-    category: "Server Operations",
-    handsOn: [
-      "Service deployment",
-      "Health checks (systemctl, journalctl, df, htop)",
-      "Patch management",
-      "Backup & image handling",
-      "User access management",
-    ],
-  },
-  {
     category: "Networking",
     handsOn: [
       "TCP/IP",
@@ -160,6 +150,16 @@ export const skills: SkillGroup[] = [
       "Packet Tracer / GNS3",
     ],
     familiar: ["LAN/WAN"],
+  },
+  {
+    category: "Server Operations",
+    handsOn: [
+      "Service deployment",
+      "Health checks (systemctl, journalctl, df, htop)",
+      "Patch management",
+      "Backup & image handling",
+      "User access management",
+    ],
   },
   {
     category: "Programming & Scripting",

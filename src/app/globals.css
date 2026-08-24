@@ -451,6 +451,32 @@ body::before {
   box-shadow: 0 0 0 3px var(--bg);
 }
 
+/*
+  The rail compressed for the mobile bar: one node per section. A dedicated
+  class rather than an important-modifier override, so it does not depend on
+  Tailwind's important syntax.
+*/
+.rail-node-mini {
+  width: 4px;
+  height: 4px;
+}
+
+/* Mobile section sheet. Tier 2, and instant under reduced motion. */
+@keyframes sheet-in {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sheet-in {
+  animation: sheet-in var(--dur-component) var(--ease-component) both;
+}
+
 /* Shared geometry for both mask variants. Structural, so never gated. */
 .mask-line,
 .mask-reveal {

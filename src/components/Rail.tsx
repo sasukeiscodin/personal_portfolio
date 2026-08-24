@@ -2,6 +2,7 @@
 
 import { type CSSProperties, useEffect, useRef, useState } from "react";
 import { profile } from "@/lib/data";
+import { sections, LAST_SECTION } from "@/lib/sections";
 
 /*
   The rail is the page's structural spine, and it reads as a service map: each
@@ -15,18 +16,7 @@ import { profile } from "@/lib/data";
   to draw, because both are driven by observers with identical thresholds. That
   shared moment is what stops the page feeling like stacked, unrelated blocks.
 */
-const sections = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "homelab", label: "Homelab" },
-  { id: "networking", label: "Networking" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "certifications", label: "Certifications" },
-  { id: "contact", label: "Contact" },
-];
 
-const LAST = sections[sections.length - 1].id;
 
 export function Rail() {
   const [observed, setObserved] = useState("");
@@ -81,7 +71,7 @@ export function Rail() {
       setAtBottom(window.scrollY + window.innerHeight >= doc.scrollHeight - 4);
 
       const first = document.getElementById(sections[0].id);
-      const last = document.getElementById(LAST);
+      const last = document.getElementById(LAST_SECTION);
       if (first && last && fill.current) {
         const start = first.offsetTop;
         const end = last.offsetTop + last.offsetHeight;
@@ -107,7 +97,7 @@ export function Rail() {
     };
   }, []);
 
-  const active = atBottom ? LAST : observed;
+  const active = atBottom ? LAST_SECTION : observed;
   const activeIndex = sections.findIndex((s) => s.id === active);
 
   return (
