@@ -48,3 +48,6 @@ next-env.d.ts
 
 # private working notes
 /HANDOVER.md
+
+# never commit source photo archives
+*.zip

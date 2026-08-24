@@ -7,6 +7,12 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/prathameshkasar/",
   tryhackme: "https://tryhackme.com/p/sasukeusingthm",
   resumeUrl: "/resume/Prathamesh_Kasar_Resume.pdf",
+  photo: {
+    src: "/images/profile/portrait.jpg",
+    alt: "Prathamesh Kasar",
+    width: 800,
+    height: 800,
+  },
   /*
     Two sentences: what I do, and where it came from. Availability and the CCNA
     live in the status strip, so this does not repeat them.

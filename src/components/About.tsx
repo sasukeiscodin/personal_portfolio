@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { Section } from "./Section";
-import { education } from "@/lib/data";
+import { education, profile } from "@/lib/data";
 
 export function About() {
   return (
@@ -28,6 +29,26 @@ export function About() {
         </div>
 
         <div>
+          {/*
+            Desaturated so the one photograph on the page sits inside the
+            achromatic palette instead of becoming the loudest element on it.
+            Colour on this site means state, and a portrait is not a state.
+          */}
+          <div className="mb-8 max-w-[220px] border border-border bg-panel p-1.5">
+            {/*
+              Sized at its display width rather than the source's 800px, so
+              Next generates a 1x and a 2x variant. Passing the full size with
+              a `sizes` hint served only a 1x file, which is soft on retina.
+            */}
+            <Image
+              src={profile.photo.src}
+              alt={profile.photo.alt}
+              width={220}
+              height={220}
+              className="h-auto w-full grayscale"
+            />
+          </div>
+
           <h3 className="mb-5 font-mono text-2xs uppercase tracking-[0.16em] text-faint">
             Education
           </h3>

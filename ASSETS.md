@@ -28,7 +28,7 @@ nothing at all while its list is empty, so you can add these one at a time.
 | 8 | TryHackMe profile screenshot | Screenshot | Medium | ☐ |
 | 9 | Packet Tracer or GNS3 topology | Screenshot | Medium | ☐ |
 | 10 | Wireshark capture | Screenshot | Medium | ☐ |
-| 11 | Profile photo | Photo | Medium | ☐ |
+| 11 | Profile photo | Photo | Medium | ☑ done |
 | 12 | Google certificate link | Text | Medium | ☐ |
 | 13 | Networking lab detail | Text | High | ☐ |
 | 14 | Homelab specifics | Text | Medium | ☐ |
@@ -408,7 +408,7 @@ Images
   □ public/images/tryhackme/profile.png
   □ public/images/networking/topology.png
   □ public/images/networking/wireshark.png
-  □ public/images/profile/portrait.jpg
+  ☑ public/images/profile/portrait.jpg
 
 Data entries in src/lib/data.ts
   □ archArtifacts
