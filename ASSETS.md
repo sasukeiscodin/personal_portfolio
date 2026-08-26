@@ -25,7 +25,7 @@ nothing at all while its list is empty, so you can add these one at a time.
 | 5 | `df -h` | Screenshot | Medium | ☐ |
 | 6 | `uptime` | Screenshot | Medium | ☐ |
 | 7 | TryHackMe figures | Text | High | ☑ done |
-| 8 | TryHackMe profile screenshot | Screenshot | Medium | ☐ |
+| 8 | TryHackMe profile screenshot | Screenshot | Medium | ☑ done |
 | 9 | Packet Tracer or GNS3 topology | Screenshot | Medium | ☐ |
 | 10 | Wireshark capture | Screenshot | Medium | ☐ |
 | 11 | Profile photo | Photo | Medium | ☑ done |
@@ -210,29 +210,21 @@ Streak was on the profile too (0) but left off: it is a day-to-day counter, not
 a cumulative figure like the other three, and a bare 0 next to real numbers
 would read as a gap rather than tell a recruiter anything.
 
-# 8. TryHackMe profile screenshot
+# 8. TryHackMe profile screenshot, done
 
-**File:** `public/images/tryhackme/profile.png`
-
-| Setting | Value |
-|---|---|
-| Size | around 1400 x 800 |
-| Format | PNG |
-| Max weight | 300 KB |
-
-Capture the section of your profile showing rank, badges and completed rooms.
-Crop out browser chrome, bookmarks and any other tabs.
-
-**Paste this**, replacing `export const tryhackmeArtifacts: ArtifactSpec[] = [];`
+Cropped from a full-page capture down to just the profile card: browser
+chrome, tab bar and taskbar all removed. Landed as a wide strip rather than
+1400 x 800 because the source was a stat card, not a full page section.
 
 ```ts
 export const tryhackmeArtifacts: ArtifactSpec[] = [
   {
     src: "/images/tryhackme/profile.png",
-    alt: "TryHackMe profile showing completed rooms, rank and earned badges",
+    alt: "TryHackMe profile showing a top 6% rank, 110 completed rooms and 17 badges",
     caption: "TryHackMe profile",
-    width: 1400,
-    height: 800,
+    meta: "Top 6%",
+    width: 1790,
+    height: 289,
   },
 ];
 ```
@@ -394,7 +386,7 @@ Images
   □ public/images/homelab/tailscale.png
   □ public/images/homelab/storage.png
   □ public/images/homelab/uptime.png
-  □ public/images/tryhackme/profile.png
+  ☑ public/images/tryhackme/profile.png
   □ public/images/networking/topology.png
   □ public/images/networking/wireshark.png
   ☑ public/images/profile/portrait.jpg
@@ -402,7 +394,7 @@ Images
 Data entries in src/lib/data.ts
   □ archArtifacts
   □ homelabArtifacts
-  □ tryhackmeArtifacts
+  ☑ tryhackmeArtifacts
   ☑ tryhackmeStats
   □ networkingArtifacts
 

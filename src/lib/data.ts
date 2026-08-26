@@ -220,7 +220,16 @@ export const archArtifacts: ArtifactSpec[] = [];
 export const networkingArtifacts: ArtifactSpec[] = [];
 
 /* Profile screenshot or badge, rendered in the Certifications section. */
-export const tryhackmeArtifacts: ArtifactSpec[] = [];
+export const tryhackmeArtifacts: ArtifactSpec[] = [
+  {
+    src: "/images/tryhackme/profile.png",
+    alt: "TryHackMe profile showing a top 6% rank, 110 completed rooms and 17 badges",
+    caption: "TryHackMe profile",
+    meta: "Top 6%",
+    width: 1790,
+    height: 289,
+  },
+];
 
 /*
   TryHackMe figures. Every field is optional and the block only renders once at
