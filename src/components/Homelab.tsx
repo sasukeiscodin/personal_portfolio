@@ -22,7 +22,7 @@ export function Homelab() {
                 className="flex gap-3 text-base leading-relaxed text-body"
               >
                 <span
-                  className="mt-2.5 h-px w-2.5 shrink-0 bg-border-strong"
+                  className="mt-3.5 h-px w-2.5 shrink-0 bg-border-strong"
                   aria-hidden="true"
                 />
                 {point}
