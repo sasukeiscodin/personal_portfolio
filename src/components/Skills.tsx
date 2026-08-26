@@ -17,7 +17,7 @@ export function Skills() {
         {skills.map((group) => (
           <div
             key={group.category}
-            className="border-t border-border py-5 first:border-t-0 first:pt-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid"
+            className="border-t border-border py-5 first:border-t-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid"
           >
             <dt className="font-mono text-2xs uppercase leading-relaxed tracking-[0.12em] text-faint lg:pt-0.5">
               {group.category}
