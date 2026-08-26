@@ -11,8 +11,13 @@ const services = ["Jellyfin", "Navidrome", "Samba / NAS"];
 /*
   Staggered delays make the four links read as one packet travelling the whole
   path, devices to server to remote, rather than four unrelated blinks.
+
+  `index` carries the same stagger for the scroll-driven version: globals.css
+  reads --pulse-i to offset each rung's slice of the topology's view timeline,
+  since animation-range replaces animation-delay once the animation is scroll
+  driven rather than time driven.
 */
-function Rung({ delay }: { delay?: number }) {
+function Rung({ delay, index }: { delay?: number; index?: number }) {
   return (
     <div
       className={`topo-link mx-auto h-5 w-px bg-border ${
@@ -21,7 +26,10 @@ function Rung({ delay }: { delay?: number }) {
       style={
         delay === undefined
           ? undefined
-          : ({ "--pulse-delay": `${delay}ms` } as CSSProperties)
+          : ({
+              "--pulse-delay": `${delay}ms`,
+              "--pulse-i": index,
+            } as CSSProperties)
       }
       aria-hidden="true"
     />
@@ -43,9 +51,9 @@ export function NetworkDiagram() {
           ))}
         </div>
 
-        <Rung delay={0} />
+        <Rung delay={0} index={0} />
         <p className="text-center text-2xs uppercase tracking-[0.16em] text-faint">LAN</p>
-        <Rung delay={260} />
+        <Rung delay={260} index={1} />
 
         <div className="mx-auto max-w-xs border border-border-strong bg-bg p-6 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-text">
@@ -63,11 +71,11 @@ export function NetworkDiagram() {
           </div>
         </div>
 
-        <Rung delay={520} />
+        <Rung delay={520} index={2} />
         <p className="text-center text-2xs uppercase tracking-[0.14em] text-faint">
           Tailscale · no inbound ports
         </p>
-        <Rung delay={780} />
+        <Rung delay={780} index={3} />
 
         <div className="mx-auto w-fit border border-border px-3 py-1.5 text-2xs uppercase tracking-[0.1em] text-muted">
           Remote access

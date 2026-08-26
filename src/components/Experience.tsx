@@ -18,7 +18,7 @@ export function Experience() {
         {experience.map((job) => (
           <li
             key={`${job.role}-${job.org}`}
-            className="border-t border-border py-8 first:border-t-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid"
+            className="ledger-row border-t border-border py-8 first:border-t-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid"
           >
             <p className="font-mono text-2xs uppercase tracking-[0.1em] text-faint lg:pt-1.5">
               {job.period}

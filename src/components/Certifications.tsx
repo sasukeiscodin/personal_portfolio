@@ -24,7 +24,7 @@ function Row({
   topics?: string[];
 }) {
   return (
-    <div className="border-t border-border py-6 first:border-t-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid">
+    <div className="ledger-row border-t border-border py-6 first:border-t-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid">
       {/*
         self-start keeps this pinned to the row's top edge, matching the
         title. Without it, the grid stretches this column to the row's full

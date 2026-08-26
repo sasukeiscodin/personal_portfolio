@@ -64,11 +64,23 @@ export function Rail() {
       }
     }
 
+    /*
+      Where the browser drives the fill from a native scroll timeline, doing
+      the same measurement here would be duplicated work on the main thread
+      for a value the compositor already has. The listener stays for
+      `atBottom`, which a scroll timeline cannot express.
+    */
+    const cssDrivesFill =
+      typeof CSS !== "undefined" &&
+      CSS.supports?.("animation-timeline: scroll()");
+
     // Progress is written straight to a CSS variable so scrolling never
     // triggers a React render.
     const onScroll = () => {
       const doc = document.documentElement;
       setAtBottom(window.scrollY + window.innerHeight >= doc.scrollHeight - 4);
+
+      if (cssDrivesFill) return;
 
       const first = document.getElementById(sections[0].id);
       const last = document.getElementById(LAST_SECTION);

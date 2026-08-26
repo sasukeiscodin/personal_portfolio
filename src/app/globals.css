@@ -250,11 +250,26 @@ body::before {
   /*
     A soft band sweeps down the section once as it arrives, like a readout
     refreshing. Fires a single time and leaves nothing behind.
+
+    The band is a fixed-height element moved with `transform` rather than a
+    full-height gradient moved with `background-position`. Background position
+    repaints the whole section every frame; transform runs on the compositor
+    for free. An earlier version of this effect in the hero animated a large
+    gradient the expensive way and stuttered against hydration on load, which
+    is why it was removed. `overflow: clip` keeps the band inside its own
+    section without creating a scroll container.
   */
+  [data-reveal] {
+    overflow: clip;
+  }
+
   [data-reveal]::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
     pointer-events: none;
     opacity: 0;
     background: linear-gradient(
@@ -263,9 +278,6 @@ body::before {
       rgba(255, 255, 255, 0.055) 45%,
       transparent 100%
     );
-    background-size: 100% 220px;
-    background-repeat: no-repeat;
-    background-position: 0 -220px;
   }
 
   [data-reveal].is-visible::after {
@@ -276,11 +288,11 @@ body::before {
 @keyframes scan-sweep {
   0% {
     opacity: 1;
-    background-position: 0 -220px;
+    transform: translateY(-220px);
   }
   100% {
     opacity: 0;
-    background-position: 0 100%;
+    transform: translateY(100vh);
   }
 }
 
@@ -429,6 +441,37 @@ body::before {
   background: var(--muted);
   transform-origin: top;
   transform: scaleY(var(--p, 0));
+}
+
+/*
+  Where the browser supports scroll-driven animations, the fill is driven by
+  the document's own scroll timeline instead of a scroll listener writing --p
+  on every event. It runs on the compositor rather than the main thread, and
+  Rail.tsx stops doing the measurement work entirely. Browsers without support
+  keep the JavaScript path unchanged.
+
+  Scroll progress is genuinely continuous, which is what a scroll timeline is
+  for. The section reveals deliberately stay on IntersectionObserver: those
+  are one-shot by design, and a scroll timeline would run them backwards and
+  hide content again when you scrolled up.
+*/
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rail-fill {
+      transform: scaleY(0);
+      animation: rail-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+@keyframes rail-progress {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
 }
 
 .rail-node {
@@ -737,6 +780,67 @@ body::before {
   background: var(--text);
   animation: link-pulse 7s ease-in-out infinite;
   animation-delay: var(--pulse-delay, 0ms);
+}
+
+/*
+  Where scroll-driven animations are supported, the packet advances as the
+  topology is read rather than looping on a timer. Two things improve: it stops
+  running while off screen, and the packet's position becomes a response to the
+  reader instead of an unrelated loop that happens to be playing.
+
+  Each rung offsets its range by its index, so the four segments still read as
+  one packet travelling the path. Scroll timelines ignore animation-delay, so
+  the stagger has to live in animation-range instead.
+*/
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .topo {
+      view-timeline-name: --topo;
+      view-timeline-axis: block;
+    }
+
+    .pulse-link::after {
+      animation-name: link-pulse;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+      animation-delay: 0s;
+      animation-timeline: --topo;
+      animation-range: entry calc(15% + var(--pulse-i, 0) * 10%)
+        cover calc(45% + var(--pulse-i, 0) * 10%);
+    }
+  }
+}
+
+/*
+  Ledger rows. Panels already respond to a pointer with a probe line tracing
+  their top edge; the ledger rows in Experience, Skills and Certifications had
+  no response at all, which made half the page feel inert next to the other
+  half. Same device, same tier 3 timing, so the two read as one language.
+
+  The row's own top border stays put and a brighter line is drawn over it,
+  rather than recolouring the border, so nothing shifts by a pixel on hover.
+*/
+.ledger-row {
+  position: relative;
+}
+
+.ledger-row::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--muted);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease-component);
+  pointer-events: none;
+}
+
+.ledger-row:hover::before,
+.ledger-row:focus-within::before {
+  transform: scaleX(1);
 }
 
 /*
