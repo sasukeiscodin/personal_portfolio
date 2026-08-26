@@ -3,7 +3,7 @@
 Source for my personal portfolio: a single page covering my Linux and networking
 work, the infrastructure I run at home, and what I am currently studying.
 
-**Live site:** not deployed yet
+**Live site:** https://prathameshkasar.vercel.app
 **Contact:** prathameshsk1@gmail.com
 
 ---
@@ -16,14 +16,14 @@ Insights, where I automate data workflows and troubleshoot pipelines and
 reporting systems. I joined as an intern in March 2026 and moved into the
 full-time role in August.
 
-Most of my own time goes somewhere else. Since 2023 I have been the person
-friends, family and people nearby bring broken machines to: boot failures,
-driver problems, network and connectivity faults, reimaging, patching, backups.
-That turned into running my own Linux server, built from a repurposed PC, which
-hosts media, music and network-attached storage for the house and which I
-administer end to end. I installed and configured Arch Linux from scratch, down
-to partitioning and the window manager, because I wanted to understand the
-system rather than accept its defaults.
+Since 2023 I have also been the person friends, family and people nearby bring
+broken machines to: boot failures, driver problems, network and connectivity
+faults, reimaging, patching, backups. That turned into running my own Linux
+server, built from a repurposed PC, which hosts media, music and
+network-attached storage for the house and which I administer end to end. I
+installed and configured Arch Linux from scratch, down to partitioning and the
+window manager, because I wanted to understand the system rather than accept
+its defaults.
 
 I hold the Google Cybersecurity Professional Certificate and I am working toward
 a CCNA. I am looking for a Linux system administration, monitoring desk or
