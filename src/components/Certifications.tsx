@@ -25,7 +25,14 @@ function Row({
 }) {
   return (
     <div className="border-t border-border py-6 first:border-t-0 first:pt-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid">
-      <div className="flex items-center gap-2.5 lg:pt-1">
+      {/*
+        self-start keeps this pinned to the row's top edge, matching the
+        title. Without it, the grid stretches this column to the row's full
+        height and items-center then centers the badge in that space, so a
+        row with topics (taller) drifts the badge away from the title while
+        a row without topics does not.
+      */}
+      <div className="flex items-center gap-2.5 self-start lg:pt-1">
         <StateIndicator state={state} />
         <span className="font-mono text-2xs uppercase tracking-[0.1em] text-muted">
           {stateLabel}
