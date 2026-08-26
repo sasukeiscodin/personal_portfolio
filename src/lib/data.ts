@@ -230,10 +230,9 @@ export const tryhackmeArtifacts: ArtifactSpec[] = [];
 export type Stat = { label: string; value: string };
 
 export const tryhackmeStats: Stat[] = [
-  // { label: "Rank", value: "" },
-  // { label: "Rooms completed", value: "" },
-  // { label: "Streak", value: "" },
-  // { label: "Badges", value: "" },
+  { label: "Rank", value: "Top 6%" },
+  { label: "Rooms completed", value: "110" },
+  { label: "Badges", value: "17" },
 ];
 
 export type Certification = {

@@ -24,7 +24,7 @@ nothing at all while its list is empty, so you can add these one at a time.
 | 4 | `tailscale status` | Screenshot | High | ☐ |
 | 5 | `df -h` | Screenshot | Medium | ☐ |
 | 6 | `uptime` | Screenshot | Medium | ☐ |
-| 7 | TryHackMe figures | Text | High | ☐ |
+| 7 | TryHackMe figures | Text | High | ☑ done |
 | 8 | TryHackMe profile screenshot | Screenshot | Medium | ☐ |
 | 9 | Packet Tracer or GNS3 topology | Screenshot | Medium | ☐ |
 | 10 | Wireshark capture | Screenshot | Medium | ☐ |
@@ -193,33 +193,24 @@ export const homelabArtifacts: ArtifactSpec[] = [
 
 ---
 
-# 7 and 8. TryHackMe
+# 7. TryHackMe figures, done
 
-You said the profile is substantial and worth featuring. I have built the slot,
-but I will not put a number on the site that I have not seen, so the block stays
-hidden until you fill it in.
-
-### The figures
-
-**Appears in:** Certifications, in its own block below the certificates.
-
-Open your profile and read off whatever it shows. Fill in only the fields you
-actually have and delete the rest.
-
-**Paste this**, replacing the commented-out `tryhackmeStats` block:
+Sourced from a profile screenshot, not published anywhere in the repo. Live in
+the Certifications block:
 
 ```ts
 export const tryhackmeStats: Stat[] = [
-  { label: "Rank", value: "" },
-  { label: "Rooms completed", value: "" },
-  { label: "Streak", value: "" },
-  { label: "Badges", value: "" },
+  { label: "Rank", value: "Top 6%" },
+  { label: "Rooms completed", value: "110" },
+  { label: "Badges", value: "17" },
 ];
 ```
 
-Example of what filled-in looks like: `{ label: "Rooms completed", value: "84" }`
+Streak was on the profile too (0) but left off: it is a day-to-day counter, not
+a cumulative figure like the other three, and a bare 0 next to real numbers
+would read as a gap rather than tell a recruiter anything.
 
-### The profile screenshot
+# 8. TryHackMe profile screenshot
 
 **File:** `public/images/tryhackme/profile.png`
 
@@ -330,7 +321,7 @@ just a data entry.
 
 ---
 
-# 12. Google certificate verification — done
+# 12. Google certificate verification, done
 
 Issued June 2025, credential `C5ZRSNGU9BP0`, linked to the Coursera share page.
 Live under the certificate's issuer line as `Issued June 2025 · Credential
@@ -412,11 +403,11 @@ Data entries in src/lib/data.ts
   □ archArtifacts
   □ homelabArtifacts
   □ tryhackmeArtifacts
-  □ tryhackmeStats
+  ☑ tryhackmeStats
   □ networkingArtifacts
 
 Text to send over
-  □ TryHackMe figures
+  ☑ TryHackMe figures
   □ Networking lab detail
   □ Homelab specifics
   □ IT support scale

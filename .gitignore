@@ -51,3 +51,6 @@ next-env.d.ts
 
 # never commit source photo archives
 *.zip
+
+# reference screenshots used to source site copy, not part of the site
+/thm_info/
