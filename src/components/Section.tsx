@@ -16,6 +16,7 @@ import { MaskText } from "./MaskText";
 */
 export function Section({
   id,
+  index,
   label,
   meta,
   major = false,
@@ -24,6 +25,8 @@ export function Section({
   children,
 }: {
   id: string;
+  /* Two-digit position in the document, e.g. "01". Omit for unnumbered sections. */
+  index?: string;
   label: string;
   meta?: string;
   major?: boolean;
@@ -45,7 +48,7 @@ export function Section({
         } as CSSProperties
       }
       className={`relative border-t border-border ${
-        major ? "py-24 sm:py-32" : "py-20 sm:py-24"
+        major ? "py-20 sm:py-28" : "py-16 sm:py-20"
       }`}
     >
       <div className="section-grid" aria-hidden="true" />
@@ -55,9 +58,21 @@ export function Section({
           className="grid gap-x-10 gap-y-8 lg:grid-cols-[7rem_1fr]"
         >
           <div>
+            {/*
+              Stacked above the label rather than inline: CERTIFICATIONS
+              already uses nearly all of the 7rem gutter on its own, and a
+              prefix sharing that line pushes the label into wrapping.
+            */}
+            {index && (
+              <p className="font-mono text-2xs tracking-[0.18em] text-faint" aria-hidden="true">
+                {index}
+              </p>
+            )}
             <h2
               id={`${id}-heading`}
-              className="font-mono text-2xs font-medium uppercase tracking-[0.18em] text-muted"
+              className={`font-mono text-2xs font-medium uppercase tracking-[0.18em] text-muted ${
+                index ? "mt-1" : ""
+              }`}
             >
               <MaskText delay={120}>{label}</MaskText>
             </h2>

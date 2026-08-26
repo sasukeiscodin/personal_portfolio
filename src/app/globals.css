@@ -16,8 +16,15 @@
   --border: #232325;
   --border-strong: #333336;
 
-  /* Text */
+  /*
+    Text. Five tonal steps rather than three: headings and values read at
+    --text, body copy at --body, secondary detail at --muted, and metadata
+    labels at --faint. Reserving --faint for short mono labels (the tier it
+    was always meant for) instead of paragraphs is what makes the darkest
+    step read as intentional rather than as everything being underlit.
+  */
   --text: #ededef;
+  --body: #c7c7cf;
   --muted: #9a9aa2;
   --faint: #6e6e76;
 
@@ -61,6 +68,7 @@
   --color-border-strong: var(--border-strong);
 
   --color-text: var(--text);
+  --color-body: var(--body);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
 

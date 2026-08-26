@@ -47,7 +47,7 @@ export function Hero() {
       <HeroGrid />
 
       <Container className="relative pt-24 pb-20 sm:pt-32 sm:pb-28">
-        <h1 className="font-mono text-2xl font-medium uppercase tracking-[-0.02em] text-text sm:text-3xl">
+        <h1 className="font-mono text-2xl font-medium uppercase tracking-[-0.02em] text-text sm:text-3xl lg:text-4xl">
           <MaskedWords text={profile.name} from={BOOT.name} />
         </h1>
 
@@ -85,7 +85,7 @@ export function Hero() {
         </dl>
 
         <p
-          className="enter-rise mt-10 max-w-xl text-md leading-relaxed text-muted"
+          className="enter-rise mt-10 max-w-xl text-md leading-relaxed text-body"
           style={{ "--d": `${BOOT.intro}ms` } as CSSProperties}
         >
           {profile.intro}

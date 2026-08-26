@@ -47,8 +47,8 @@ export function NetworkDiagram() {
         <p className="text-center text-2xs uppercase tracking-[0.16em] text-faint">LAN</p>
         <Rung delay={260} />
 
-        <div className="mx-auto max-w-xs border border-border-strong bg-bg p-5 text-center">
-          <p className="text-2xs font-medium uppercase tracking-[0.14em] text-text">
+        <div className="mx-auto max-w-xs border border-border-strong bg-bg p-6 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-text">
             Linux Server
           </p>
           <div className="topo-services mt-3 flex flex-col gap-1.5">

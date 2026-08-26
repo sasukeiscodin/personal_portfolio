@@ -32,7 +32,7 @@ function Row({
         </span>
       </div>
       <div className="mt-3 lg:mt-0">
-        <h3 className="text-base font-medium text-text">{title}</h3>
+        <h3 className="text-lg font-semibold text-text">{title}</h3>
         <p className="mt-1 text-sm text-muted">{detail}</p>
         {topics && (
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
@@ -53,8 +53,17 @@ function Row({
 
 export function Certifications() {
   return (
-    <Section id="certifications" label="Certifications" ledger>
-      <div data-stagger="cascade" className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
+    <Section
+      id="certifications"
+      index="07"
+      label="Certifications"
+      meta={`${certifications.length} completed · ${inProgress.length} in progress`}
+      ledger
+    >
+      <div
+        data-stagger="cascade"
+        className="border-t border-border-strong border-b border-border lg:col-span-2 lg:grid lg:grid-cols-subgrid"
+      >
         {certifications.map((cert) => (
           <Row
             key={cert.name}

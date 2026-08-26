@@ -6,17 +6,17 @@ import { archProject, archArtifacts } from "@/lib/data";
 
 export function Projects() {
   return (
-    <Section id="projects" label="Projects" dense>
+    <Section id="projects" index="05" label="Projects" dense>
       <Panel label="Arch Linux" meta="Daily driver">
-        <h3 className="text-xl font-medium tracking-[-0.01em] text-text">
+        <h3 className="text-2xl font-semibold tracking-[-0.01em] text-text">
           <MaskText delay={300}>{archProject.title}</MaskText>
         </h3>
-        <p className="mt-4 max-w-[62ch] text-md leading-relaxed text-muted">
+        <p className="mt-4 max-w-[62ch] text-md leading-relaxed text-body">
           {archProject.summary}
         </p>
         <ul className="mt-6 space-y-2.5">
           {archProject.points.map((point) => (
-            <li key={point} className="flex gap-3 text-base leading-relaxed text-muted">
+            <li key={point} className="flex gap-3 text-base leading-relaxed text-body">
               <span
                 className="mt-2.5 h-px w-2.5 shrink-0 bg-border-strong"
                 aria-hidden="true"

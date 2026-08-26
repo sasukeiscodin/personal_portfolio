@@ -12,9 +12,9 @@ const links = [
 
 export function Contact() {
   return (
-    <Section id="contact" label="Contact">
+    <Section id="contact" index="08" label="Contact">
       <div className="max-w-xl">
-        <p className="text-md leading-relaxed text-muted">
+        <p className="text-md leading-relaxed text-body">
           I&apos;m looking for Linux administration, network operations, monitoring, or incident
           response work. If you&apos;re hiring, or you have a question about anything here, email
           is the fastest way to reach me.

@@ -4,9 +4,9 @@ import { education, profile } from "@/lib/data";
 
 export function About() {
   return (
-    <Section id="about" label="About">
+    <Section id="about" index="01" label="About">
       <div className="grid gap-12 xl:grid-cols-[1.5fr_1fr]">
-        <div className="max-w-[66ch] space-y-4 text-md leading-relaxed text-muted">
+        <div className="max-w-[66ch] space-y-4 text-md leading-relaxed text-body">
           <p>
             I studied Computer Engineering at Savitribai Phule Pune University. Most of what I
             know about Linux and networking came from practice rather than from a syllabus: a

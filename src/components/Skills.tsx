@@ -3,8 +3,17 @@ import { skills } from "@/lib/data";
 
 export function Skills() {
   return (
-    <Section id="skills" label="Skills" ledger>
-      <dl data-stagger="tight" className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
+    <Section
+      id="skills"
+      index="06"
+      label="Skills"
+      meta={`${skills.length} categories`}
+      ledger
+    >
+      <dl
+        data-stagger="tight"
+        className="border-t border-border-strong border-b border-border lg:col-span-2 lg:grid lg:grid-cols-subgrid"
+      >
         {skills.map((group) => (
           <div
             key={group.category}

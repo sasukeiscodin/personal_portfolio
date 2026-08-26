@@ -10,7 +10,7 @@ function Group({ label, items }: { label: string; items: string[] }) {
       </h3>
       <ul className="mt-4 space-y-2.5">
         {items.map((item) => (
-          <li key={item} className="flex gap-3 text-base leading-relaxed text-muted">
+          <li key={item} className="flex gap-3 text-base leading-relaxed text-body">
             <span
               className="mt-2.5 h-px w-2.5 shrink-0 bg-border-strong"
               aria-hidden="true"
@@ -25,8 +25,15 @@ function Group({ label, items }: { label: string; items: string[] }) {
 
 export function Networking() {
   return (
-    <Section id="networking" label="Networking" meta="CCNA in progress" major dense>
-      <p className="max-w-[62ch] text-md leading-relaxed text-muted">
+    <Section
+      id="networking"
+      index="04"
+      label="Networking"
+      meta="CCNA in progress"
+      major
+      dense
+    >
+      <p className="max-w-[62ch] text-md leading-relaxed text-body">
         {networking.summary}
       </p>
 

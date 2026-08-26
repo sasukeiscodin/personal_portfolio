@@ -3,9 +3,18 @@ import { experience } from "@/lib/data";
 
 export function Experience() {
   return (
-    <Section id="experience" label="Experience" ledger>
+    <Section
+      id="experience"
+      index="02"
+      label="Experience"
+      meta={`${experience.length} roles`}
+      ledger
+    >
       {/* Rows join the section grid so dates align under the section label. */}
-      <ol data-stagger="cascade" className="lg:col-span-2 lg:grid lg:grid-cols-subgrid">
+      <ol
+        data-stagger="cascade"
+        className="border-t border-border-strong border-b border-border lg:col-span-2 lg:grid lg:grid-cols-subgrid"
+      >
         {experience.map((job) => (
           <li
             key={`${job.role}-${job.org}`}
@@ -15,7 +24,7 @@ export function Experience() {
               {job.period}
             </p>
             <div className="mt-3 lg:mt-0">
-              <h3 className="text-lg font-medium tracking-[-0.01em] text-text">{job.role}</h3>
+              <h3 className="text-xl font-semibold tracking-[-0.01em] text-text">{job.role}</h3>
               <p className="mt-1 text-sm text-muted">{job.org}</p>
               {job.note && (
                 <p className="mt-1 text-sm text-faint">{job.note}</p>
@@ -24,7 +33,7 @@ export function Experience() {
                 {job.points.map((point) => (
                   <li
                     key={point}
-                    className="flex gap-3 text-base leading-relaxed text-muted"
+                    className="flex gap-3 text-base leading-relaxed text-body"
                   >
                     <span
                       className="mt-2.5 h-px w-2.5 shrink-0 bg-border-strong"
