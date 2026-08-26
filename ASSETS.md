@@ -29,7 +29,7 @@ nothing at all while its list is empty, so you can add these one at a time.
 | 9 | Packet Tracer or GNS3 topology | Screenshot | Medium | ☐ |
 | 10 | Wireshark capture | Screenshot | Medium | ☐ |
 | 11 | Profile photo | Photo | Medium | ☑ done |
-| 12 | Google certificate link | Text | Medium | ☐ |
+| 12 | Google certificate link | Text | Medium | ☑ done |
 | 13 | Networking lab detail | Text | High | ☐ |
 | 14 | Homelab specifics | Text | Medium | ☐ |
 | 15 | IT support scale | Text | Medium | ☐ |
@@ -330,13 +330,11 @@ just a data entry.
 
 ---
 
-# 12. Google certificate verification
+# 12. Google certificate verification — done
 
-**Proves:** the certificate is real and checkable. An unverifiable credential is
-worth noticeably less than a linked one.
-
-Find the Coursera or Credly link for your Google Cybersecurity Professional
-Certificate and send me the URL. I will attach it to the existing entry.
+Issued June 2025, credential `C5ZRSNGU9BP0`, linked to the Coursera share page.
+Live under the certificate's issuer line as `Issued June 2025 · Credential
+C5ZRSNGU9BP0 · Verify ↗`.
 
 ---
 
@@ -422,7 +420,7 @@ Text to send over
   □ Networking lab detail
   □ Homelab specifics
   □ IT support scale
-  □ Google certificate verification link
+  ☑ Google certificate verification link
 
 Then
   □ npm run build passes

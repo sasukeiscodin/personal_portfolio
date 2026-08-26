@@ -240,6 +240,10 @@ export type Certification = {
   name: string;
   issuer: string;
   topics: string[];
+  /* Optional: makes the certificate checkable rather than an assertion. */
+  issued?: string;
+  credentialId?: string;
+  verifyUrl?: string;
 };
 
 export const certifications: Certification[] = [
@@ -247,6 +251,9 @@ export const certifications: Certification[] = [
     name: "Google Cybersecurity Professional Certificate",
     issuer: "Google",
     topics: ["Linux", "SQL", "Network Security", "Incident Response", "Security Operations", "Risk Management", "SIEM", "Cyber Threats"],
+    issued: "June 2025",
+    credentialId: "C5ZRSNGU9BP0",
+    verifyUrl: "https://coursera.org/share/b07ef1b23a753b64993e57ce741088b7",
   },
 ];
 

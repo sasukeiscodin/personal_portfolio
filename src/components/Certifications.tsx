@@ -1,4 +1,4 @@
-import { Terminal } from "lucide-react";
+import { ExternalLink, Terminal } from "lucide-react";
 import { Section } from "./Section";
 import { StateIndicator } from "./StateIndicator";
 import { Artifact } from "./Artifact";
@@ -16,12 +16,18 @@ function Row({
   title,
   detail,
   topics,
+  issued,
+  credentialId,
+  verifyUrl,
 }: {
   state: "ok" | "progress";
   stateLabel: string;
   title: string;
   detail: string;
   topics?: string[];
+  issued?: string;
+  credentialId?: string;
+  verifyUrl?: string;
 }) {
   return (
     <div className="ledger-row border-t border-border py-6 first:border-t-0 lg:col-span-2 lg:grid lg:grid-cols-subgrid">
@@ -41,6 +47,23 @@ function Row({
       <div className="mt-3 lg:mt-0">
         <h3 className="text-lg font-semibold text-text">{title}</h3>
         <p className="mt-1 text-sm text-muted">{detail}</p>
+        {(issued || credentialId || verifyUrl) && (
+          <p className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-2xs uppercase tracking-[0.1em] text-faint">
+            {issued && <span>Issued {issued}</span>}
+            {credentialId && <span>Credential {credentialId}</span>}
+            {verifyUrl && (
+              <a
+                href={verifyUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="link-underline inline-flex items-center gap-1.5 text-muted transition-colors duration-150 hover:text-text"
+              >
+                Verify
+                <ExternalLink size={11} aria-hidden="true" />
+              </a>
+            )}
+          </p>
+        )}
         {topics && (
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
             {topics.map((topic) => (
@@ -79,6 +102,9 @@ export function Certifications() {
             title={cert.name}
             detail={cert.issuer}
             topics={cert.topics}
+            issued={cert.issued}
+            credentialId={cert.credentialId}
+            verifyUrl={cert.verifyUrl}
           />
         ))}
 
